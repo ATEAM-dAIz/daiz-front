@@ -85,10 +85,10 @@
 }
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
-  background-color: #ffee00;
+  background-color: $highlight-color;
 }
 .highlight {
   height: 50px;
   border: 1px solid rgb(218, 218, 218) !important;
-  background: $highlight-color;
+  background: $main-color;
 }
