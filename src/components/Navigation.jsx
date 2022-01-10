@@ -9,9 +9,9 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Navigation = () => {
+const Navigation = ({ fullScreen }) => {
   return (
-    <div className={styles.container}>
+    <div className={fullScreen ? "" : styles.container}>
       <div className={styles.icons}>
         <FontAwesomeIcon icon={faHome} />
         <FontAwesomeIcon icon={faPlusCircle} />

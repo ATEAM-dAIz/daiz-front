@@ -4,7 +4,7 @@ import moment from "moment";
 
 import "./CalendarBox.scss";
 
-const CalendarBox = () => {
+const CalendarBox = ({ fullScreen }) => {
   const [value, onChange] = useState(new Date());
   const marks = [
     "03-12-2021",
@@ -21,17 +21,21 @@ const CalendarBox = () => {
     "15-01-2022",
   ];
   return (
-    <div>
-      <Calendar
-        onChange={onChange}
-        value={value}
-        locale="en-EN"
-        tileClassName={({ date, view }) => {
-          if (marks.find((x) => x === moment(date).format("DD-MM-YYYY"))) {
-            return "highlight";
-          }
-        }}
-      />
+    <div className="calendar-container">
+      {fullScreen ? (
+        ""
+      ) : (
+        <Calendar
+          onChange={onChange}
+          value={value}
+          locale="en-EN"
+          tileClassName={({ date, view }) => {
+            if (marks.find((x) => x === moment(date).format("DD-MM-YYYY"))) {
+              return "highlight";
+            }
+          }}
+        />
+      )}
     </div>
   );
 };

@@ -1,4 +1,34 @@
+@import "../styles/utils.scss";
+
 .container {
+  position: relative;
   height: 100%;
   padding-top: 32px;
+}
+.dimmer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $background-color;
+}
+
+.fullScreenBtn {
+  margin: 8px 0 0 8px;
+  font-size: 22px;
+  color: #7a3d00;
+  z-index: 100;
+}
+
+.mySwiper {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+}
+
+.mySwiperMoved {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  animation: slidein 3s linear 1s;
 }
