@@ -2,9 +2,7 @@
 
 .react-calendar {
   width: 100%;
-  background: white;
-  border: 1px solid #a0a096;
-  font-family: Arial, Helvetica, sans-serif;
+  background: $background-color;
   line-height: 1.125em;
 }
 .react-calendar--doubleView {
