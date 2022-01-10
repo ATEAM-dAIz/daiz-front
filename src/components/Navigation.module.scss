@@ -1,0 +1,18 @@
+@import "../styles/utils.scss";
+
+.container {
+  position: relative;
+  height: calc(100% - 372px);
+}
+
+.icons {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 20px 0;
+  background-color: $background-color;
+  font-size: 28px;
+  color: $main-color;
+}
