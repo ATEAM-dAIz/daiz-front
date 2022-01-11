@@ -3,26 +3,45 @@ $main-color: #f3a95f;
 $highlight-color: #f09134;
 $lightgray-color: #8e8e8e;
 
-.input-account {
-  width: 70%;
-  height: 50px;
+@mixin input($width, $height, $border-radius) {
+  width: $width;
+  height: $height;
   margin-top: 32px;
   padding-left: 20px;
   border: 1px solid $lightgray-color;
-  border-radius: 30px;
+  border-radius: $border-radius;
   color: $lightgray-color;
 }
-.input-account:focus {
-  outline: none;
-  border-color: #f09134;
-}
 
-.btn-main {
-  width: 70%;
+@mixin btn($width) {
+  width: $width;
   height: 50px;
   border: transparent;
   border-radius: 10px;
   background-color: $main-color;
   outline: none;
   color: #ffffff;
+}
+
+.input-account {
+  @include input(70%, 50px, 30px);
+}
+.input-account:focus {
+  outline: none;
+  border-color: #f09134;
+}
+
+.input-writing--title {
+  @include input(80%, 50px, 10px);
+}
+.input-writing {
+  @include input(90%, 150px, 10px);
+}
+
+.btn-main {
+  @include btn(70%);
+}
+
+.btn-writing {
+  @include btn(50%);
 }
