@@ -5,6 +5,7 @@ import "./App.scss";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Main from "./pages/Main";
+import Writing from "./pages/Writing";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/main" component={Main} />
+        <Route path="/writing" component={Writing} />
       </div>
     </BrowserRouter>
   );
