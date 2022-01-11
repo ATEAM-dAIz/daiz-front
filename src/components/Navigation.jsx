@@ -11,7 +11,7 @@ import {
 
 const Navigation = ({ fullScreen }) => {
   return (
-    <div className={fullScreen ? "" : styles.container}>
+    <div>
       <div className={styles.icons}>
         <FontAwesomeIcon icon={faHome} />
         <FontAwesomeIcon icon={faPlusCircle} />
