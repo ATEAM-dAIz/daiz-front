@@ -41,19 +41,19 @@ const Main = () => {
         className={fullScreen ? styles.mySwiperMoved : styles.mySwiper}
       >
         <SwiperSlide>
-          <TextPreview />
+          <TextPreview id={0} />
         </SwiperSlide>
         <SwiperSlide>
-          <TextPreview />
+          <TextPreview id={1} />
         </SwiperSlide>
         <SwiperSlide>
-          <TextPreview />
+          <TextPreview id={2} />
         </SwiperSlide>
         <SwiperSlide>
-          <TextPreview />
+          <TextPreview id={3} />
         </SwiperSlide>
         <SwiperSlide>
-          <TextPreview />
+          <TextPreview id={4} />
         </SwiperSlide>
       </Swiper>
 
