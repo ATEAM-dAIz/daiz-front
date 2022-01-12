@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Main from "./pages/Main";
 import Writing from "./pages/Writing";
+import Analysis from "./pages/Analysis";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/main" component={Main} />
         <Route path="/writing" component={Writing} />
+        <Route path="/analysis" component={Analysis} />
       </div>
     </BrowserRouter>
   );
