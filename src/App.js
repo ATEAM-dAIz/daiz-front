@@ -8,6 +8,7 @@ import Main from "./pages/Main";
 import Writing from "./pages/Writing";
 import Analysis from "./pages/Analysis";
 import Result from "./pages/Result";
+import Mypage from "./pages/Mypage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/writing" component={Writing} />
         <Route path="/analysis" component={Analysis} />
         <Route path="/result" component={Result} />
+        <Route path="/mypage" component={Mypage} />
       </div>
     </BrowserRouter>
   );
