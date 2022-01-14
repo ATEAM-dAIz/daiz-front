@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import Main from "./pages/Main";
 import Writing from "./pages/Writing";
 import Analysis from "./pages/Analysis";
+import Result from "./pages/Result";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/main" component={Main} />
         <Route path="/writing" component={Writing} />
         <Route path="/analysis" component={Analysis} />
+        <Route path="/result" component={Result} />
       </div>
     </BrowserRouter>
   );

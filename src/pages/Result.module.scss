@@ -1,0 +1,40 @@
+@import "../styles/utils.scss";
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.commentContainer {
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  transform: translateY(190px);
+  box-shadow: 2px -4px 19px #f3a95f;
+}
+
+.chevronUp {
+  position: absolute;
+  margin: 0 auto;
+  top: -35px;
+  left: 0;
+  right: 0;
+  font-size: 32px;
+  color: $highlight-color;
+}
+
+.commentTitle {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.extended {
+  position: relative;
+  height: 700px;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  transform: translateY(-40%);
+  background-color: $background-color;
+  box-shadow: 2px -4px 19px #f3a95f;
+  z-index: 2;
+}
