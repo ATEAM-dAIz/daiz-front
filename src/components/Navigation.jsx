@@ -11,12 +11,10 @@ import {
 
 const Navigation = ({ fullScreen }) => {
   return (
-    <div>
-      <div className={styles.icons}>
-        <FontAwesomeIcon icon={faHome} />
-        <FontAwesomeIcon icon={faPlusCircle} />
-        <FontAwesomeIcon icon={faUser} />
-      </div>
+    <div className={styles.icons}>
+      <FontAwesomeIcon icon={faHome} />
+      <FontAwesomeIcon icon={faPlusCircle} />
+      <FontAwesomeIcon icon={faUser} />
     </div>
   );
 };

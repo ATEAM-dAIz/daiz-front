@@ -22,8 +22,6 @@ SwiperCore.use([Autoplay, Pagination]);
 const Main = () => {
   const [fullScreen, setFullScreen] = useState(false);
 
-  console.log(fullScreen);
-
   return (
     <div className={fullScreen ? styles.dimmer : styles.container}>
       <CalendarBox fullScreen={fullScreen} />
@@ -34,28 +32,17 @@ const Main = () => {
         onClick={() => setFullScreen(!fullScreen)}
       />
 
-      <Swiper
-        slidesPerView={3}
-        direction={"vertical"}
-        spaceBetween={10}
-        className={fullScreen ? styles.mySwiperMoved : styles.mySwiper}
-      >
-        <SwiperSlide>
-          <TextPreview id={0} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <TextPreview id={1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <TextPreview id={2} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <TextPreview id={3} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <TextPreview id={4} />
-        </SwiperSlide>
-      </Swiper>
+      <div className={fullScreen ? styles.mySwiperMoved : styles.mySwiper}>
+        <TextPreview id={0} />
+        <TextPreview id={1} />
+        <TextPreview id={2} />
+        <TextPreview id={3} />
+        <TextPreview id={4} />
+        <TextPreview id={5} />
+        <TextPreview id={6} />
+        <TextPreview id={7} />
+        <TextPreview id={8} />
+      </div>
 
       <Navigation fullScreen={fullScreen} />
     </div>
