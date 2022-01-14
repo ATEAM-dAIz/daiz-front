@@ -1,9 +1,10 @@
 .container {
-  position: relative;
+  display: flex;
+  width: 80%;
+  margin: 16px 0;
 }
 
 .wrapper {
-  position: absolute;
   left: 72px;
   display: flex;
   flex-direction: column;

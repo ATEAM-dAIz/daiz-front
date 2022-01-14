@@ -4,10 +4,10 @@ import styles from "./TextPreview.module.scss";
 
 // JSON 배열
 const json_example = [
-  // { date: "03-12-2021", title: "코로나 검사 받은 날" },
-  // { date: "07-12-2021", title: "브루클린 나인나인" },
-  // { date: "12-12-2021", title: "오늘 힘들었다..." },
-  // { date: "13-12-2021", title: "곧 종강이다!!!" },
+  { date: "03-12-2021", title: "코로나 검사 받은 날" },
+  { date: "07-12-2021", title: "브루클린 나인나인" },
+  { date: "12-12-2021", title: "오늘 힘들었다..." },
+  { date: "13-12-2021", title: "곧 종강이다!!!" },
   { date: "03-01-2022", title: "벌써 24살이라니" },
   { date: "07-01-2022", title: "벌써 일주일이나 지남" },
   { date: "12-01-2022", title: "특강 들으러 해운대 다녀옴" },
