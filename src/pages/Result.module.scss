@@ -1,8 +1,29 @@
 @import "../styles/utils.scss";
 
+.day {
+  margin: 32px 0 0 8px;
+}
+.date {
+  margin: 0 0 8px 8px;
+}
+hr {
+  width: 95%;
+  height: 1px;
+  margin: 0 auto;
+  background-color: #c4c4c4;
+  border: 0;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
 .content {
   position: relative;
+  margin: 16px 16px;
   z-index: 1;
+  word-wrap: break-word;
 }
 
 .commentContainer {
@@ -23,8 +44,9 @@
 }
 
 .commentTitle {
+  padding-top: 8px;
   font-size: 20px;
-  font-weight: normal;
+  font-weight: 500;
   text-align: center;
 }
 
@@ -37,4 +59,8 @@
   background-color: $background-color;
   box-shadow: 2px -4px 19px #f3a95f;
   z-index: 2;
+}
+
+.commentContent {
+  margin: 16px 24px;
 }
