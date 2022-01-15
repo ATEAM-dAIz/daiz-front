@@ -3,21 +3,10 @@ import CalendarBox from "../components/CalendarBox";
 import TextPreview from "../components/TextPreview";
 import Navigation from "../components/Navigation";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/swiper.min.css";
-import "swiper/components/pagination/pagination.min.css";
-// import Swiper core and required modules
-import SwiperCore, { Autoplay, Pagination } from "swiper";
-
 import styles from "./Main.module.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExpandAlt, faCompressAlt } from "@fortawesome/free-solid-svg-icons";
-
-// install Swiper modules
-SwiperCore.use([Autoplay, Pagination]);
 
 const Main = () => {
   const [fullScreen, setFullScreen] = useState(false);
