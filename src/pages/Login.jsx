@@ -3,7 +3,7 @@ import React from "react";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import styles from "./Login.module.scss";
 
-const Login = () => {
+const Login = ({ history }) => {
   return (
     <div className={styles.container}>
       <Logo className={styles.logo} />
@@ -26,11 +26,15 @@ const Login = () => {
           <input type="checkbox" id="keepLogin" name="keepLogin" />
           로그인 유지
         </label>
-        <button className="btn-main">로그인</button>
+        <button className="btn-main" onClick={() => history.push("/main")}>
+          로그인
+        </button>
       </form>
 
       <div className={styles.linkContainer}>
-        <p className={styles.link}>처음이신가요?</p>
+        <p className={styles.link} onClick={() => history.push("/signup")}>
+          처음이신가요?
+        </p>
         <p className={styles.link}>비밀번호를 잊으셨나요?</p>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import styles from "./Navigation.module.scss";
 
@@ -9,12 +10,16 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Navigation = ({ fullScreen }) => {
+const Navigation = () => {
+  const history = useHistory();
   return (
     <div className={styles.icons}>
-      <FontAwesomeIcon icon={faHome} />
-      <FontAwesomeIcon icon={faPlusCircle} />
-      <FontAwesomeIcon icon={faUser} />
+      <FontAwesomeIcon icon={faHome} onClick={() => history.push("/main")} />
+      <FontAwesomeIcon
+        icon={faPlusCircle}
+        onClick={() => history.push("/writing")}
+      />
+      <FontAwesomeIcon icon={faUser} onClick={() => history.push("/mypage")} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import Navigation from "./../components/Navigation";
 
 import styles from "./Analysis.module.scss";
 
-const Analysis = () => {
+const Analysis = ({ history }) => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -25,7 +25,10 @@ const Analysis = () => {
           />
         </svg>
 
-        <div className={styles.contents}>
+        <div
+          className={styles.contents}
+          onClick={() => history.push("/result")} // 시안을 위해 해둔 것. 나중에는 로딩스피너 대신 이 페이지 사용하기
+        >
           <h1>
             데이즈가 OO님의 <br /> 하루를 보고있어요.
           </h1>

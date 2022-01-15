@@ -3,7 +3,7 @@ import React from "react";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import styles from "./Signup.module.scss";
 
-const Signup = () => {
+const Signup = ({ history }) => {
   return (
     <div className={styles.container}>
       <Logo className={styles.logo} />
@@ -40,7 +40,9 @@ const Signup = () => {
       </form>
 
       <div className={styles.linkContainer}>
-        <p className={styles.link}>이미 가입하셨나요??</p>
+        <p className={styles.link} onClick={() => history.push("/")}>
+          이미 가입하셨나요?
+        </p>
       </div>
     </div>
   );

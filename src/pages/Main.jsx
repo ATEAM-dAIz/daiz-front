@@ -8,7 +8,7 @@ import styles from "./Main.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExpandAlt, faCompressAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Main = () => {
+const Main = ({ history }) => {
   const [fullScreen, setFullScreen] = useState(false);
 
   return (

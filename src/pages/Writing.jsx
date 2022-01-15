@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styles from "./Writing.module.scss";
 import Navigation from "./../components/Navigation";
 
-const Writing = () => {
+const Writing = ({ history }) => {
   const [modal, setModal] = useState(false);
 
   const onSubmit = (e) => {
@@ -83,7 +83,12 @@ const Writing = () => {
             >
               돌아가기
             </button>
-            <button className={styles.btnConfirm}>확인</button>
+            <button
+              className={styles.btnConfirm}
+              onClick={() => history.push("/analysis")}
+            >
+              확인
+            </button>
           </div>
         </div>
       )}
