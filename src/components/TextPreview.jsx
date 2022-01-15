@@ -1,6 +1,7 @@
 import React from "react";
 
 import styles from "./TextPreview.module.scss";
+import { useHistory } from "react-router-dom";
 
 // JSON 배열
 const json_example = [
@@ -18,8 +19,9 @@ const json_example = [
 ];
 
 const TextPreview = ({ id }) => {
+  const history = useHistory();
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={() => history.push("/result")}>
       <div className={styles.wrapper}>
         <p className={styles.date}>{json_example[id]["date"]}</p>
         <p className={styles.title}>{json_example[id]["title"]}</p>
