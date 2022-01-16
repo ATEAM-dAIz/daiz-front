@@ -33,38 +33,6 @@ const Writing = ({ history }) => {
               // required
               className="input-writing"
             />
-            <h2>그럼 OO님의 기분은 어떠한가요?</h2>
-            <input
-              name="title"
-              type="text"
-              placeholder="내용"
-              // required
-              className="input-writing"
-            />
-            <h2>그럼 OO님의 기분은 어떠한가요?</h2>
-            <input
-              name="title"
-              type="text"
-              placeholder="내용"
-              // required
-              className="input-writing"
-            />
-            <h2>그럼 OO님의 기분은 어떠한가요?</h2>
-            <input
-              name="title"
-              type="text"
-              placeholder="내용"
-              // required
-              className="input-writing"
-            />
-            <h2>그럼 OO님의 기분은 어떠한가요?</h2>
-            <input
-              name="title"
-              type="text"
-              placeholder="내용"
-              // required
-              className="input-writing"
-            />
           </div>
 
           <button className="btn-writing" onClick={() => setModal(true)}>
