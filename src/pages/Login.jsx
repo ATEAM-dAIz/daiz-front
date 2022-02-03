@@ -9,7 +9,7 @@ const Login = ({ history }) => {
       <Logo className={styles.logo} />
       <form className={styles.column} noValidate>
         <input
-          name="id"
+          name="email"
           type="email"
           placeholder="이메일"
           required
