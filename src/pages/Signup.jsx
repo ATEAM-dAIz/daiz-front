@@ -1,40 +1,94 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { ReactComponent as Logo } from "../assets/logo.svg";
+import { requestSignup } from "../services/AuthService";
 import styles from "./Signup.module.scss";
 
 const Signup = ({ history }) => {
+  const [email, setEmail] = useState("");
+  const [pw, setPw] = useState("");
+  const [rePw, setRePw] = useState("");
+  const [name, setName] = useState("");
+
+  function changeInput(e) {
+    const {
+      target: { name, value },
+    } = e;
+    switch (name) {
+      case "email":
+        setEmail(value);
+        break;
+      case "password":
+        setPw(value);
+        break;
+      case "reEnterPassword":
+        setRePw(value);
+        break;
+      case "name":
+        setName(value);
+        break;
+      default:
+    }
+  }
+
+  async function onSubmit(e) {
+    e.preventDefault(); //prevent initialization input
+
+    if (!email.includes("@")) {
+      alert("이메일 형식을 입력하세요.");
+    } else if (rePw !== pw) {
+      alert("비밀번호를 확인하세요.");
+    } else {
+      let response = await requestSignup(email, name, pw, rePw);
+      if (typeof response !== "string") {
+        // login(response);
+        alert("가입이 완료되었습니다!");
+        history.push("/");
+      } else {
+        alert(response);
+      }
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Logo className={styles.logo} />
-      <form className={styles.column} noValidate>
+      <form className={styles.column} onSubmit={onSubmit} noValidate>
         <input
+          value={email}
           name="email"
           type="email"
           placeholder="이메일"
-          required
           className="input-account"
+          onChange={changeInput}
+          required
         />
         <input
+          value={pw}
           name="password"
           type="password"
           placeholder="비밀번호"
-          required
           className="input-account"
+          onChange={changeInput}
+          required
         />
         <input
+          value={rePw}
           name="reEnterPassword"
           type="password"
           placeholder="비밀번호 확인"
-          required
           className="input-account"
+          onChange={changeInput}
+          required
         />
         <input
-          name="nickname"
+          value={name}
+          name="name"
           type="text"
           placeholder="닉네임"
-          required
           className="input-account"
+          onChange={changeInput}
+          required
         />
         <button className={`btn-main ${styles.btn}`}>회원가입</button>
       </form>
