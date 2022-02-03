@@ -1,17 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { ReactComponent as Logo } from "../assets/logo.svg";
+import { requestLogin } from "../services/AuthService";
 import styles from "./Login.module.scss";
 
 const Login = ({ history }) => {
+  const [email, setEmail] = useState("");
+  const [pw, setPw] = useState("");
+
+  function changeInput(e) {
+    const {
+      target: { name, value },
+    } = e;
+    switch (name) {
+      case "email":
+        setEmail(value);
+        break;
+      case "password":
+        setPw(value);
+        break;
+
+      default:
+    }
+  }
+
+  async function onSubmit(e) {
+    e.preventDefault(); //prevent initialization input
+    if (!email.includes("@")) {
+      alert("이메일 형식을 입력하세요.");
+    } else {
+      let response = await requestLogin(email, pw);
+      if (typeof response !== "string") {
+        // login(response);
+        history.push("/main");
+      } else {
+        alert(response);
+      }
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Logo className={styles.logo} />
-      <form className={styles.column} noValidate>
+      <form className={styles.column} onSubmit={onSubmit} noValidate>
         <input
           name="email"
           type="email"
           placeholder="이메일"
+          onChange={changeInput}
           required
           className="input-account"
         />
@@ -19,6 +55,7 @@ const Login = ({ history }) => {
           name="password"
           type="password"
           placeholder="비밀번호"
+          onChange={changeInput}
           required
           className="input-account"
         />
@@ -26,7 +63,7 @@ const Login = ({ history }) => {
           <input type="checkbox" id="keepLogin" name="keepLogin" />
           로그인 유지
         </label>
-        <button className="btn-main" onClick={() => history.push("/main")}>
+        <button className="btn-main" onSubmit={onSubmit}>
           로그인
         </button>
       </form>

@@ -24,3 +24,22 @@ export async function requestSignup(email, name, pw, rePw) {
     }
   }
 }
+
+export async function requestLogin(id, password) {
+  try {
+    let response = await axios.post(
+      `${serverURL}/login/`,
+
+      {
+        email: id,
+        password: password,
+      }
+    );
+    // response.data.password = "";
+    console.log(response.data);
+    return response.data;
+  } catch (e) {
+    console.log(e.response.data);
+    return "이메일 혹은 비밀번호를 확인하세요.";
+  }
+}
