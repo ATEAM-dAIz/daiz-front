@@ -10,8 +10,8 @@ const Signup = ({ history }) => {
       <form className={styles.column} noValidate>
         <input
           name="id"
-          type="text"
-          placeholder="아이디"
+          type="email"
+          placeholder="이메일"
           required
           className="input-account"
         />
