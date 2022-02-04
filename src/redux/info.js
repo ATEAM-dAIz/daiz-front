@@ -6,8 +6,8 @@ import { persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 // actionTypes
-export const LOGIN_USER = "info/LOGIN_USER";
-export const LOGOUT_USER = "info/LOGOUT_USER";
+// export const LOGIN_USER = "info/LOGIN_USER";
+// export const LOGOUT_USER = "info/LOGOUT_USER";
 
 // actions
 // const loginAction = (userData) => {
@@ -28,24 +28,25 @@ export const LOGOUT_USER = "info/LOGOUT_USER";
 
 // reducer
 const initialState = {
-  user: {},
+  email: "",
   isLoggedIn: false,
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_USER:
+    case "LOGIN_USER":
+      console.log(state);
       return {
         ...state,
-        user: action.userData,
-        isLoggedIn: action.isLoggedIn,
+        email: action.payload.email,
+        isLoggedIn: action.payload.isLoggedIn,
       };
 
-    case LOGOUT_USER:
+    case "LOGOUT_USER":
       return {
         ...state,
-        user: action.userData,
-        isLoggedIn: action.isLoggedIn,
+        email: action.payload.email,
+        isLoggedIn: action.payload.isLoggedIn,
       };
 
     default:

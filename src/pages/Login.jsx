@@ -33,25 +33,21 @@ const Login = ({ history }) => {
     if (!email.includes("@")) {
       alert("이메일 형식을 입력하세요.");
     } else {
-      requestLogin(email, pw)
-        .then((result) => console.log(result))
-        .catch((err) => console.log(err));
+      let result = {};
+      await requestLogin(email, pw).then((response) => {
+        result = response;
+      });
 
-      // dispatch({
-      //   type: "login",
-      //   payload: {
-      //     email: response.email,
-      //     isLoggedIn: true,
-      //   },
-      // });
-
-      // if (typeof response !== "string") {
-      //   console.log(typeof response);
-      //   // login(response);
-      //   history.push("/main");
-      // } else {
-      //   alert(response);
-      // }
+      dispatch({
+        type: "LOGIN_USER",
+        payload: {
+          email: result["user"]["email"],
+          isLoggedIn: true,
+        },
+      });
+      result["user"]["email"]
+        ? history.push("/main")
+        : alert("정보 불러오기 실패");
     }
   }
 
