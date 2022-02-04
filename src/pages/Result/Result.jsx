@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import styles from "./Result.module.scss";
-import Navigation from "./../components/Navigation";
+import Navigation from "../../components/Navigation";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

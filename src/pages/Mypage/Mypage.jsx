@@ -1,9 +1,9 @@
 import React from "react";
 
-import TextPreview from "./../components/TextPreview";
+import TextPreview from "../../components/TextPreview";
 
 import styles from "./Mypage.module.scss";
-import Navigation from "./../components/Navigation";
+import Navigation from "../../components/Navigation";
 
 const Mypage = () => {
   return (

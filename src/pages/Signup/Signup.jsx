@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { ReactComponent as Logo } from "../assets/logo.svg";
-import { requestSignup } from "../services/AuthService";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+import { requestSignup } from "../../services/AuthService";
 import styles from "./Signup.module.scss";
 
 const Signup = ({ history }) => {

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";
 
-import { ReactComponent as Logo } from "../assets/logo.svg";
-import { requestLogin } from "../services/AuthService";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+import { requestLogin } from "../../services/AuthService";
 import styles from "./Login.module.scss";
 
 const Login = ({ history }) => {

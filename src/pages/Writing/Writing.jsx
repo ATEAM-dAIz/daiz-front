@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import styles from "./Writing.module.scss";
-import Navigation from "./../components/Navigation";
+import Navigation from "../../components/Navigation";
 
 const Writing = ({ history }) => {
   const [modal, setModal] = useState(false);

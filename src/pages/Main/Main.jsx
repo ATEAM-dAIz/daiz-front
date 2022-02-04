@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import CalendarBox from "../components/CalendarBox";
-import TextPreview from "../components/TextPreview";
-import Navigation from "../components/Navigation";
+import CalendarBox from "../../components/CalendarBox";
+import TextPreview from "../../components/TextPreview";
+import Navigation from "../../components/Navigation";
 
 import styles from "./Main.module.scss";
 

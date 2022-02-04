@@ -2,13 +2,13 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import "./App.scss";
 
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Main from "./pages/Main";
-import Writing from "./pages/Writing";
-import Analysis from "./pages/Analysis";
-import Result from "./pages/Result";
-import Mypage from "./pages/Mypage";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import Main from "./pages/Main/Main";
+import Writing from "./pages/Writing/Writing";
+import Analysis from "./pages/Analysis/Analysis";
+import Result from "./pages/Result/Result";
+import Mypage from "./pages/Mypage/Mypage";
 
 function App() {
   return (
