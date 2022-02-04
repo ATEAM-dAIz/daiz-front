@@ -23,15 +23,13 @@ export const requestSignup = async (email, name, pw, rePw) => {
     });
 };
 
-export const requestLogin = async (id, password) => {
-  await axios
+export const requestLogin = async (email, pw) => {
+  return await axios
     .post(`${serverURL}/login/`, {
-      email: id,
-      password: password,
+      email: email,
+      password: pw,
     })
-    .then((response) => {
-      console.log(response.data);
-    })
+    .then((response) => response.data)
     .catch((e) => {
       console.log(e.response.data);
       return "이메일 혹은 비밀번호를 확인하세요.";

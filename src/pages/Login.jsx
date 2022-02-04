@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useDispatch } from "react-redux";
+
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { requestLogin } from "../services/AuthService";
 import styles from "./Login.module.scss";
@@ -7,6 +9,8 @@ import styles from "./Login.module.scss";
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
+
+  const dispatch = useDispatch();
 
   function changeInput(e) {
     const {
@@ -29,13 +33,25 @@ const Login = ({ history }) => {
     if (!email.includes("@")) {
       alert("이메일 형식을 입력하세요.");
     } else {
-      let response = await requestLogin(email, pw);
-      if (typeof response !== "string") {
-        // login(response);
-        history.push("/main");
-      } else {
-        alert(response);
-      }
+      requestLogin(email, pw)
+        .then((result) => console.log(result))
+        .catch((err) => console.log(err));
+
+      // dispatch({
+      //   type: "login",
+      //   payload: {
+      //     email: response.email,
+      //     isLoggedIn: true,
+      //   },
+      // });
+
+      // if (typeof response !== "string") {
+      //   console.log(typeof response);
+      //   // login(response);
+      //   history.push("/main");
+      // } else {
+      //   alert(response);
+      // }
     }
   }
 
