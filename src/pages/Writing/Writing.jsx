@@ -5,9 +5,15 @@ import Navigation from "../../components/Navigation";
 
 const Writing = ({ history }) => {
   const [modal, setModal] = useState(false);
+  const [context, setContext] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
+  };
+
+  const onChange = (e) => {
+    const validInputs = e.target.value;
+    validInputs.length === 0 ? setContext(false) : setContext(true);
   };
 
   return (
@@ -27,15 +33,19 @@ const Writing = ({ history }) => {
           <div className={styles.wrapper}>
             <h2>오늘 무슨 일이 있었나요?</h2>
             <input
-              name="title"
+              name="context"
               type="text"
               placeholder="내용"
-              // required
+              required
               className="input-writing"
+              onChange={onChange}
             />
           </div>
-
-          <button className="btn-writing" onClick={() => setModal(true)}>
+          {/* {context && setModal(true)} */}
+          <button
+            className="btn-writing"
+            onClick={() => context && setModal(true)}
+          >
             작성완료
           </button>
         </form>
