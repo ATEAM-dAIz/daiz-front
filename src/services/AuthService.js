@@ -38,13 +38,15 @@ export const requestLogin = async (email, pw) => {
 };
 
 export const postDiary = async (title, content) => {
-  const token = new Cookies().get("csrftoken");
-  await axios
-    .post(`${serverURL}/diary/`, {
-      user: token,
+  const token = new Cookies().get("daiz-auth");
+  await axios({
+    url: `${serverURL}/diary/`,
+    headers: { Authorization: token },
+    data: {
       title: title,
       content: content,
-    })
+    },
+  })
     .then((response) => response.data)
     .catch((e) => {
       console.log(e);
