@@ -4,12 +4,16 @@ import { serverURL } from "./ServerConst";
 
 export const requestSignup = async (email, name, pw, rePw) => {
   await axios
-    .post(`${serverURL}/signup/`, {
-      email: email,
-      name: name,
-      password1: pw,
-      password2: rePw,
-    })
+    .post(
+      `${serverURL}/signup/`,
+      {
+        email: email,
+        name: name,
+        password1: pw,
+        password2: rePw,
+      },
+      { withCredentials: true }
+    )
     .then((response) => {
       console.log(response.data);
     })
@@ -26,10 +30,14 @@ export const requestSignup = async (email, name, pw, rePw) => {
 
 export const requestLogin = async (email, pw) => {
   return await axios
-    .post(`${serverURL}/login/`, {
-      email: email,
-      password: pw,
-    })
+    .post(
+      `${serverURL}/login/`,
+      {
+        email: email,
+        password: pw,
+      },
+      { withCredentials: true }
+    )
     .then((response) => response.data)
     .catch((e) => {
       console.log(e.response.data);

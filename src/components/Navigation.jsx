@@ -17,7 +17,7 @@ const Navigation = () => {
       <FontAwesomeIcon icon={faHome} onClick={() => history.push("/main")} />
       <FontAwesomeIcon
         icon={faPlusCircle}
-        onClick={() => history.push("/writing")}
+        onClick={() => history.push("/write")}
       />
       <FontAwesomeIcon icon={faUser} onClick={() => history.push("/mypage")} />
     </div>
