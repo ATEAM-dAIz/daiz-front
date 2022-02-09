@@ -2,18 +2,17 @@ import axios from "axios";
 import { Cookies } from "react-cookie";
 import { serverURL } from "./ServerConst";
 
+const token = new Cookies().get("csrftoken");
+console.log(token);
+
 export const requestSignup = async (email, name, pw, rePw) => {
   await axios
-    .post(
-      `${serverURL}/signup/`,
-      {
-        email: email,
-        name: name,
-        password1: pw,
-        password2: rePw,
-      },
-      { withCredentials: true }
-    )
+    .post(`${serverURL}/signup/`, {
+      email: email,
+      name: name,
+      password1: pw,
+      password2: rePw,
+    })
     .then((response) => {
       console.log(response.data);
     })
@@ -46,14 +45,20 @@ export const requestLogin = async (email, pw) => {
 };
 
 export const postDiary = async (title, content) => {
-  const token = new Cookies().get("daiz-auth");
   await axios({
+    method: "post",
     url: `${serverURL}/diary/`,
-    headers: { Authorization: token },
+    xstfCookieName: "csrftoken",
+    xsrfHeaderName: "X-CSRFToken",
+    headers: {
+      "X-CSRFToken": token,
+    },
+
     data: {
       title: title,
       content: content,
     },
+    withCredentials: true,
   })
     .then((response) => response.data)
     .catch((e) => {
