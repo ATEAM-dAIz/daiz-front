@@ -1,12 +1,22 @@
+@import "../../styles/utils.scss";
+
 .container {
   height: 100%;
 
   h1 {
-    margin: 16px 0 16px 0;
+    margin: 16px 0 8px 0;
     font-size: 24px;
     text-align: center;
     font-weight: normal;
   }
+}
+
+.btnLogout {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: $lightgray-color;
+  text-align: end;
 }
 
 .mySwiper {

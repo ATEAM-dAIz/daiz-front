@@ -9,7 +9,8 @@ const Mypage = () => {
   return (
     <div className={styles.container}>
       <h1>일기 목록</h1>
-
+      {/* 로그아웃 위치 미정 */}
+      <div className={styles.btnLogout}>로그아웃</div>
       <div className={styles.mySwiper}>
         <TextPreview id={0} />
         <TextPreview id={1} />
@@ -21,6 +22,7 @@ const Mypage = () => {
         <TextPreview id={7} />
         <TextPreview id={8} />
       </div>
+
       <Navigation className={styles.navigation} />
     </div>
   );
