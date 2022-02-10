@@ -10,19 +10,22 @@ import Analysis from "./pages/Analysis/Analysis";
 import Result from "./pages/Result/Result";
 import Mypage from "./pages/Mypage/Mypage";
 
+import PublicRoute from "./routers/PublicRoute";
+import PrivateRoute from "./routers/PrivateRoute";
+
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Route exact path="/" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/main" component={Main} />
-        <Route path="/write" component={Writing} />
-        <Route path="/analysis" component={Analysis} />
-        <Route path="/result" component={Result} />
-        <Route path="/mypage" component={Mypage} />
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <PublicRoute restricted={true} exact path="/" component={Login} />
+        <PublicRoute restricted={true} path="/signup" component={Signup} />
+        <PrivateRoute path="/main" component={Main} />
+        <PrivateRoute path="/write" component={Writing} />
+        <PrivateRoute path="/analysis" component={Analysis} />
+        <PrivateRoute path="/result" component={Result} />
+        <PrivateRoute path="/mypage" component={Mypage} />
+      </BrowserRouter>
+    </div>
   );
 }
 

@@ -2,14 +2,14 @@ import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 const PublicRoute = ({ component: Component, restricted, ...rest }) => {
-  const isLogin = useSelector((state) => state.infoReducer.id);
+  const isLoggedIn = useSelector((state) => state.userReducer.isLoggedIn);
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        isLogin && restricted ? (
-          <Redirect to="/mypage" />
+        isLoggedIn && restricted ? (
+          <Redirect to="/main" />
         ) : (
           <Component {...props} />
         )
