@@ -3,27 +3,22 @@ import { serverURL } from "./ServerConst";
 
 export const requestSignup = async (email, name, pw, rePw) => {
   await axios
-    .post(
-      `${serverURL}/signup/`,
-      {
-        email: email,
-        name: name,
-        password1: pw,
-        password2: rePw,
-      },
-      { withCredentials: true }
-    )
+    .post(`${serverURL}/signup/`, {
+      email: email,
+      name: name,
+      password1: pw,
+      password2: rePw,
+    })
     .then((response) => {
       console.log(response.data);
     })
     .catch((e) => {
       console.log(e.response.data);
-      if (Object.keys(e.response.data).includes("email")) {
-        return "중복된 이메일이 존재합니다.";
-      } else {
-        console.error(e);
-        return "예기치 못한 에러가 발생했습니다.";
-      }
+      // if (Object.keys(e.response.data).includes("email")) {
+      //   return "중복된 이메일이 존재합니다.";
+      // }
+      console.error(e);
+      return "예기치 못한 에러가 발생했습니다.";
     });
 };
 
@@ -39,7 +34,9 @@ export const requestLogin = async (email, pw) => {
     )
     .then((response) => {
       /// token이 필요한 API 요청 시 header Authorization에 token 담아서 보내기
-      axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access_token}`
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${response.data.access_token}`;
       return response.data;
     })
     .catch((e) => {

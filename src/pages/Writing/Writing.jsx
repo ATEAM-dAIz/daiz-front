@@ -3,17 +3,11 @@ import React, { useState } from "react";
 import styles from "./Writing.module.scss";
 import Navigation from "../../components/Navigation";
 import { postDiary } from "../../services/AuthService";
-
 const Writing = ({ history }) => {
   const [modal, setModal] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [existingContent, setExistingContent] = useState(false);
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    await postDiary(title, content);
-  };
 
   const changeInput = (e) => {
     const {
@@ -39,7 +33,7 @@ const Writing = ({ history }) => {
       {modal && <div className={styles.dimmer}></div>}
       <div className={styles.container}>
         <h1>오늘 하루를 기록해보세요.</h1>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={(e) => e.preventDefault()} id="writingForm">
           <input
             name="title"
             type="text"
@@ -66,7 +60,6 @@ const Writing = ({ history }) => {
           >
             작성완료
           </button>
-
           {modal && (
             <div className={styles.modal}>
               <p>일기가 분석된 후에는 수정할 수 없어요.</p>
@@ -80,8 +73,10 @@ const Writing = ({ history }) => {
                 </button>
                 <button
                   className={styles.btnConfirm}
-                  onSubmit={onSubmit}
-                  // onClick={() => history.push("/analysis")}
+                  onClick={() => {
+                    postDiary(title, content);
+                    history.push("/analysis");
+                  }}
                 >
                   확인
                 </button>
