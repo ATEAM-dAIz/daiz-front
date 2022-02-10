@@ -44,20 +44,3 @@ export const requestLogin = async (email, pw) => {
       return "이메일 혹은 비밀번호를 확인하세요.";
     });
 };
-
-export const postDiary = async (title, content) => {
-  await axios({
-    method: "post",
-    url: `${serverURL}/diary/`,
-    data: {
-      title: title,
-      content: content,
-    },
-    withCredentials: true,
-  })
-    .then((response) => response.data)
-    .catch((e) => {
-      console.log(e);
-      return "예기치 못한 에러가 발생했습니다.";
-    });
-};

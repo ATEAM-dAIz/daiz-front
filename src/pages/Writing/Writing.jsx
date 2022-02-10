@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import styles from "./Writing.module.scss";
 import Navigation from "../../components/Navigation";
-import { postDiary } from "../../services/AuthService";
+import { postDiary } from "../../services/DiaryService";
 const Writing = ({ history }) => {
   const [modal, setModal] = useState(false);
   const [title, setTitle] = useState("");
