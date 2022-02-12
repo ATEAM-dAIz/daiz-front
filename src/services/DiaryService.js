@@ -18,10 +18,10 @@ export const postDiary = async (title, content) => {
     });
 };
 const token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ0NTE0OTYxLCJpYXQiOjE2NDQ1MDc3NjEsImp0aSI6IjAyYjFkYTk4ZjJmODQ3YTFhYTE2NDJjZTUwYmQ3MTljIiwidXNlcl9pZCI6ImRhaXoyQGdtYWlsLmNvbSJ9.G7-B-V71g4w5eOIeNd3jtuXzpvOYultR11IgNhb-mXs";
-export const getDiary = async (idx) => {
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ0NjQ3MTI4LCJpYXQiOjE2NDQ2Mzk5MjgsImp0aSI6ImU3ZWJhODI0YjU4ZjRiYjdhZGZkZTM0ZTQwZGNkN2UxIiwidXNlcl9pZCI6Im1uaWppc3VAcHVreW9uZy5hYy5rciJ9.vYnSlJBrs5g3MBP82VnUT6F9jS750xCmYKHvMbF1Gc4";
+export const getDiary = async () => {
   return await axios
-    .get(`${serverURL}/diary/${idx}`, {
+    .get(`${serverURL}/diary/`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {

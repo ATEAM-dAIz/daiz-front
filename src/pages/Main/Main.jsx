@@ -22,15 +22,7 @@ const Main = () => {
       />
 
       <div className={fullScreen ? styles.mySwiperMoved : styles.mySwiper}>
-        <TextPreview id={0} />
-        <TextPreview id={1} />
-        <TextPreview id={2} />
-        <TextPreview id={3} />
-        <TextPreview id={4} />
-        <TextPreview id={5} />
-        <TextPreview id={6} />
-        <TextPreview id={7} />
-        <TextPreview id={8} />
+        <TextPreview />
       </div>
 
       <Navigation fullScreen={fullScreen} />
