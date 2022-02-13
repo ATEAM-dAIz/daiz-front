@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import styles from "./Writing.module.scss";
 import Navigation from "../../components/Navigation";
 import { postDiary } from "../../services/DiaryService";
+import { useSelector } from "react-redux";
+
 const Writing = ({ history }) => {
+  const refresh_token = useSelector((state) => state.userReducer.refresh_token);
+
   const [modal, setModal] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -74,7 +78,7 @@ const Writing = ({ history }) => {
                 <button
                   className={styles.btnConfirm}
                   onClick={() => {
-                    postDiary(title, content);
+                    postDiary(refresh_token, title, content);
                     history.push("/analysis");
                   }}
                 >
