@@ -44,3 +44,16 @@ export const requestLogin = async (email, pw) => {
       return "이메일 혹은 비밀번호를 확인하세요.";
     });
 };
+
+export const requestAccessToken = async (refresh_token) => {
+  return await axios
+    .post(`${serverURL}/token/refresh/`, {
+      refresh: refresh_token,
+    })
+    .then((response) => {
+      return response.data.access;
+    })
+    .catch((e) => {
+      console.log(e.response.data);
+    });
+};
