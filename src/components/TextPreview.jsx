@@ -20,20 +20,24 @@ const TextPreview = () => {
     get();
   }, [refresh_token]);
 
-  return diary.map((val, idx) => {
-    return (
-      <div
-        className={styles.container}
-        key={idx}
-        onClick={() => history.push("/result")}
-      >
-        {/* <div className={styles.wrapper}>
-          <p className={styles.date}>{val["updated_at"].split(/T.+/)}</p>
-          <p className={styles.title}>{val["title"]}</p>
-        </div> */}
-      </div>
-    );
-  });
+  return diary.length !== 0 ? (
+    diary.map((val, idx) => {
+      return (
+        <div
+          className={styles.container}
+          key={idx}
+          onClick={() => history.push("/result")}
+        >
+          <div className={styles.wrapper}>
+            <p className={styles.date}>{val["updated_at"].split(/T.+/)}</p>
+            <p className={styles.title}>{val["title"]}</p>
+          </div>
+        </div>
+      );
+    })
+  ) : (
+    <div></div>
+  );
 };
 
 export default TextPreview;
