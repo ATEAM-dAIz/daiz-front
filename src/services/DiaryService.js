@@ -3,13 +3,11 @@ import { serverURL } from "./ServerConst";
 import { requestAccessToken } from "./AuthService";
 
 export const postDiary = async (refresh_token, title, content) => {
-  let access_token = "";
-  if (axios.defaults.headers.common["Authorization"] === undefined) {
-    access_token = await requestAccessToken(refresh_token).then((response) => {
+  const access_token = await requestAccessToken(refresh_token).then(
+    (response) => {
       return response;
-    });
-  }
-
+    }
+  );
   await axios
     .post(
       `${serverURL}/diary/`,
@@ -33,13 +31,11 @@ export const postDiary = async (refresh_token, title, content) => {
 };
 
 export const getDiary = async (refresh_token) => {
-  let access_token = "";
-  if (axios.defaults.headers.common["Authorization"] === undefined) {
-    access_token = await requestAccessToken(refresh_token).then((response) => {
+  const access_token = await requestAccessToken(refresh_token).then(
+    (response) => {
       return response;
-    });
-  }
-
+    }
+  );
   return await axios
     .get(`${serverURL}/diary/`, {
       headers: {
