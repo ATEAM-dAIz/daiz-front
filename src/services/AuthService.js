@@ -57,3 +57,13 @@ export const requestAccessToken = async (refresh_token) => {
       console.log(e.response.data);
     });
 };
+
+export const checkAccessToken = (refresh_token) => {
+  if (axios.defaults.headers.common["Authorization"] === undefined) {
+    return requestAccessToken(refresh_token).then((response) => {
+      return response;
+    });
+  } else {
+    return axios.defaults.headers.common["Authorization"];
+  }
+};

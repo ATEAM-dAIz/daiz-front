@@ -1,13 +1,9 @@
 import axios from "axios";
 import { serverURL } from "./ServerConst";
-import { requestAccessToken } from "./AuthService";
+import { checkAccessToken } from "./AuthService";
 
 export const postDiary = async (refresh_token, title, content) => {
-  const access_token = await requestAccessToken(refresh_token).then(
-    (response) => {
-      return response;
-    }
-  );
+  const access_token = await checkAccessToken(refresh_token);
   await axios
     .post(
       `${serverURL}/diary/`,
@@ -31,11 +27,24 @@ export const postDiary = async (refresh_token, title, content) => {
 };
 
 export const getDiary = async (refresh_token) => {
-  const access_token = await requestAccessToken(refresh_token).then(
-    (response) => {
-      return response;
-    }
-  );
+  const access_token = await checkAccessToken(refresh_token);
+  return await axios
+    .get(`${serverURL}/diary/`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((e) => {
+      console.log(e.response.data);
+      alert("예기치 못한 에러가 발생했습니다.");
+    });
+};
+
+export const getDiaryDetail = async (refresh_token) => {
+  const access_token = await checkAccessToken(refresh_token);
   return await axios
     .get(`${serverURL}/diary/`, {
       headers: {
