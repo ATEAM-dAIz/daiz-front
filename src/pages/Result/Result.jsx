@@ -18,8 +18,8 @@ const Result = ({ location }) => {
     diary_id = localStorage.getItem("diary_id");
   }
 
-  const titleRef = useRef("");
-  const contentRef = useRef("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [swipeUp, getSwipeUp] = useState(false);
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
 
@@ -27,8 +27,8 @@ const Result = ({ location }) => {
     const get = async () => {
       await getDiaryDetail(refresh_token, diary_id).then((response) => {
         console.log(response);
-        titleRef.current = response["title"];
-        contentRef.current = response["content"];
+        setTitle(response["title"]);
+        setContent(response["content"]);
       });
     };
     get();
@@ -39,8 +39,8 @@ const Result = ({ location }) => {
       <p className={styles.day}>SUN</p>
       <p className={styles.date}>2021.11.07</p>
       <hr />
-      <h1 className={styles.title}>{titleRef.current}</h1>
-      <p className={styles.content}>{contentRef.current}</p>
+      <h1 className={styles.title}>{title}</h1>
+      <p className={styles.content}>{content}</p>
       <div className={swipeUp ? styles.extended : styles.commentContainer}>
         <FontAwesomeIcon
           icon={swipeUp ? faChevronDown : faChevronUp}
