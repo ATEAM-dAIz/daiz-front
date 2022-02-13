@@ -1,6 +1,6 @@
 import axios from "axios";
 import { serverURL } from "./ServerConst";
-import { checkAccessToken } from "./AuthService";
+import { checkAccessToken, requestAccessToken } from "./AuthService";
 
 export const postDiary = async (refresh_token, title, content) => {
   const access_token = await checkAccessToken(refresh_token);
@@ -28,6 +28,7 @@ export const postDiary = async (refresh_token, title, content) => {
 
 export const getDiary = async (refresh_token) => {
   const access_token = await checkAccessToken(refresh_token);
+
   return await axios
     .get(`${serverURL}/diary/`, {
       headers: {
@@ -43,10 +44,10 @@ export const getDiary = async (refresh_token) => {
     });
 };
 
-export const getDiaryDetail = async (refresh_token) => {
+export const getDiaryDetail = async (refresh_token, id) => {
   const access_token = await checkAccessToken(refresh_token);
   return await axios
-    .get(`${serverURL}/diary/`, {
+    .get(`${serverURL}/diary/${id}`, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },

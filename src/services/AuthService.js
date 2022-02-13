@@ -58,12 +58,12 @@ export const requestAccessToken = async (refresh_token) => {
     });
 };
 
-export const checkAccessToken = (refresh_token) => {
+export const checkAccessToken = async (refresh_token) => {
   if (axios.defaults.headers.common["Authorization"] === undefined) {
-    return requestAccessToken(refresh_token).then((response) => {
+    return await requestAccessToken(refresh_token).then((response) => {
       return response;
     });
   } else {
-    return axios.defaults.headers.common["Authorization"];
+    return axios.defaults.headers.common["Authorization"].split(" ")[1];
   }
 };
