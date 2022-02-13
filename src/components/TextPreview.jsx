@@ -26,7 +26,7 @@ const TextPreview = () => {
         <div
           className={styles.container}
           key={idx}
-          onClick={() => history.push("/result")}
+          onClick={() => history.push({ pathname: "/result", id: val["id"] })}
         >
           <div className={styles.wrapper}>
             <p className={styles.date}>{val["updated_at"].split(/T.+/)}</p>
