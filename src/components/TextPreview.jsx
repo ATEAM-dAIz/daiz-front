@@ -4,21 +4,21 @@ import styles from "./TextPreview.module.scss";
 import { useHistory } from "react-router-dom";
 
 import { getDiary } from "../services/DiaryService";
+import { useSelector } from "react-redux";
 
 const TextPreview = () => {
   const history = useHistory();
   const [diary, setDiary] = useState([]);
+  const refresh_token = useSelector((state) => state.userReducer.refresh_token);
 
   useEffect(() => {
     const get = async () => {
-      await getDiary().then((response) => {
+      await getDiary(refresh_token).then((response) => {
         setDiary([...response]);
       });
     };
     get();
-  }, []);
-
-  console.log(diary);
+  }, [refresh_token]);
 
   return diary.map((val, idx) => {
     return (
@@ -27,10 +27,10 @@ const TextPreview = () => {
         key={idx}
         onClick={() => history.push("/result")}
       >
-        <div className={styles.wrapper}>
+        {/* <div className={styles.wrapper}>
           <p className={styles.date}>{val["updated_at"].split(/T.+/)}</p>
           <p className={styles.title}>{val["title"]}</p>
-        </div>
+        </div> */}
       </div>
     );
   });
