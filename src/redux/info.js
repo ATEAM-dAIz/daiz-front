@@ -29,6 +29,7 @@ import storage from "redux-persist/lib/storage";
 // reducer
 const initialState = {
   email: "",
+  refresh_token: "",
   isLoggedIn: false,
 };
 
@@ -39,6 +40,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         email: action.payload.email,
+        refresh_token: action.payload.refresh_token,
         isLoggedIn: action.payload.isLoggedIn,
       };
 
@@ -46,6 +48,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         email: action.payload.email,
+        refresh_token: action.payload.refresh_token,
         isLoggedIn: action.payload.isLoggedIn,
       };
 

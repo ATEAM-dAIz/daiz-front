@@ -42,6 +42,7 @@ const Login = ({ history }) => {
         type: "LOGIN_USER",
         payload: {
           email: result["user"]["email"],
+          refresh_token: result["refresh_token"],
           isLoggedIn: true,
         },
       });
