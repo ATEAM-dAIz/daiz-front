@@ -1,23 +1,32 @@
 // 액션 타입
-const ADD_DATE = "info/ADD_DATE";
+const INSERT_DATE = "diary/INSERT_DATE";
 
 // 액션 생성 함수
-export const addDate = () => ({ type: ADD_DATE });
+export const addDate = () => ({ type: INSERT_DATE });
 
 // 모듈 초기 상태
 const initialState = {
-  date: "",
+  date: [],
 };
 
 // 리듀서
 export default function diaryReducer(state = initialState, action) {
   switch (action.type) {
-    case "ADD_DATE":
-      console.log(state);
+    case "PREPEND_DATE":
       return {
         ...state,
-        email: action.payload.email,
+        date: [action.payload.date],
       };
+    case "INSERT_DATE":
+      state.date.map((val) => {
+        return (
+          val !== action.payload.date && {
+            ...state, //copying the original state
+            date: [...state.date, action.payload], //new todos array
+          }
+        );
+      });
+
     default:
       return state;
   }

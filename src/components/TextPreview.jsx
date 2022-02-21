@@ -4,9 +4,10 @@ import styles from "./TextPreview.module.scss";
 import { useHistory } from "react-router-dom";
 
 import { getDiary } from "../services/DiaryService";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const TextPreview = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [diary, setDiary] = useState([]);
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
@@ -22,6 +23,23 @@ const TextPreview = () => {
 
   return diary.length !== 0 ? (
     diary.map((val, idx) => {
+      let date = val["updated_at"].split(/T.+/)[0];
+      if (idx === 0) {
+        dispatch({
+          type: "PREPEND_DATE",
+          payload: {
+            date: date,
+          },
+        });
+      } else {
+        dispatch({
+          type: "INSERT_DATE",
+          payload: {
+            date: date,
+          },
+        });
+      }
+
       return (
         <div
           className={styles.container}
@@ -29,7 +47,7 @@ const TextPreview = () => {
           onClick={() => history.push({ pathname: "/result", id: val["id"] })}
         >
           <div className={styles.wrapper}>
-            <p className={styles.date}>{val["updated_at"].split(/T.+/)}</p>
+            <p className={styles.date}>{date}</p>
             <p className={styles.title}>{val["title"]}</p>
           </div>
         </div>

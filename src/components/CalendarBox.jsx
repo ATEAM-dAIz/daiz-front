@@ -5,20 +5,13 @@ import moment from "moment";
 import "./CalendarBox.scss";
 
 const CalendarBox = ({ fullScreen }) => {
+  let marks = localStorage.getItem("persist:root");
+  marks = JSON.parse(marks)["diaryReducer"];
+  marks = JSON.parse(marks)["date"];
+  console.log(marks);
+
   const [value, onChange] = useState(new Date());
-  const marks = [
-    "03-12-2021",
-    "07-12-2021",
-    "12-12-2021",
-    "13-12-2021",
-    "23-12-2021",
-    "25-12-2021",
-    "03-01-2022",
-    "07-01-2022",
-    "12-01-2022",
-    "13-01-2022",
-    "15-01-2022",
-  ];
+
   return (
     <div className="calendar-container">
       {fullScreen ? (
@@ -29,7 +22,7 @@ const CalendarBox = ({ fullScreen }) => {
           value={value}
           locale="en-EN"
           tileClassName={({ date, view }) => {
-            if (marks.find((x) => x === moment(date).format("DD-MM-YYYY"))) {
+            if (marks.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
               return "highlight";
             }
           }}
