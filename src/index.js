@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 
 // redux-persist 사용
 import { PersistGate } from "redux-persist/integration/react";
-import { store, persistor } from "./redux/info";
+import { store, persistor } from "./store/index";
 
 ReactDOM.render(
   <React.StrictMode>
