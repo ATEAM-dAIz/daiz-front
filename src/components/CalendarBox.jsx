@@ -3,13 +3,10 @@ import Calendar from "react-calendar";
 import moment from "moment";
 
 import "./CalendarBox.scss";
+import { useSelector } from "react-redux";
 
 const CalendarBox = ({ fullScreen }) => {
-  let marks = localStorage.getItem("persist:root");
-  marks = JSON.parse(marks)["diaryReducer"];
-  marks = JSON.parse(marks)["date"];
-  console.log(marks);
-
+  const marks = useSelector((state) => state.diaryReducer.date);
   const [value, onChange] = useState(new Date());
 
   return (
