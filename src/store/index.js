@@ -11,7 +11,7 @@ import diaryReducer from "./modules/diary";
 const persistConfig = {
   key: "root",
   storage,
-  // blacklist: ["diaryReducer"],
+  blacklist: ["diaryReducer"],
 };
 
 const rootReducer = combineReducers({ userReducer, diaryReducer });

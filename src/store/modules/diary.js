@@ -12,20 +12,10 @@ const initialState = {
 // 리듀서
 export default function diaryReducer(state = initialState, action) {
   switch (action.type) {
-    case "PREPEND_DATE":
-      return {
-        ...state,
-        date: [action.payload.date],
-      };
     case "INSERT_DATE":
-      state.date.map((val) => {
-        return (
-          val !== action.payload.date && {
-            ...state, //copying the original state
-            date: [...state.date, action.payload], //new todos array
-          }
-        );
-      });
+      return {
+        date: [...state.date, ...action.payload.date],
+      };
 
     default:
       return state;
