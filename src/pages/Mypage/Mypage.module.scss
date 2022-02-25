@@ -12,11 +12,13 @@
 }
 
 .btnLogout {
+  width: fit-content;
   margin-right: 8px;
   margin-bottom: 8px;
   font-size: 14px;
   color: $lightgray-color;
   text-align: end;
+  float: right;
 }
 
 .mySwiper {
@@ -25,6 +27,6 @@
   flex-direction: column;
   align-items: flex-end;
   width: 100%;
-  height: 100%;
+  height: 82%;
   overflow-y: scroll;
 }

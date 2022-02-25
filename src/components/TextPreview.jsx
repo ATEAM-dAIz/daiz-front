@@ -15,7 +15,7 @@ const TextPreview = () => {
   useEffect(() => {
     const createCalendar = (response) => {
       let dateSet = new Set();
-      for (let diary of response) {
+      for (const diary of response) {
         dateSet.add(diary["updated_at"].split(/T.+/)[0]);
       }
       return Array.from(dateSet);
