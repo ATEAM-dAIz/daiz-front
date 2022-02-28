@@ -72,11 +72,7 @@ const Login = ({ history }) => {
           required
           className="input-account"
         />
-        <label htmlFor="keepLogin" className={styles.keepLogin}>
-          <input type="checkbox" id="keepLogin" name="keepLogin" />
-          로그인 유지
-        </label>
-        <button className="btn-main" onSubmit={onSubmit}>
+        <button className={`btn-main ${styles.loginBtn}`} onSubmit={onSubmit}>
           로그인
         </button>
       </form>
