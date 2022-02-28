@@ -7,6 +7,7 @@ import storage from "redux-persist/lib/storage";
 
 import userReducer from "./modules/info";
 import diaryReducer from "./modules/diary";
+import navigationReducer from "./modules/navigation";
 
 const persistConfig = {
   key: "root",
@@ -14,7 +15,11 @@ const persistConfig = {
   blacklist: ["diaryReducer"],
 };
 
-const rootReducer = combineReducers({ userReducer, diaryReducer });
+const rootReducer = combineReducers({
+  userReducer,
+  diaryReducer,
+  navigationReducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
