@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import styles from "./Writing.module.scss";
 import Navigation from "../../components/Navigation";
 import { postDiary } from "../../services/DiaryService";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Writing = ({ history }) => {
+  const dispatch = useDispatch();
+
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
 
   const [modal, setModal] = useState(false);
@@ -31,6 +33,13 @@ const Writing = ({ history }) => {
       default:
     }
   };
+
+  dispatch({
+    type: "CLICK_WRITING",
+    payload: {
+      writing: true,
+    },
+  });
 
   return (
     <>

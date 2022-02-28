@@ -19,6 +19,13 @@ const Mypage = () => {
     });
   }
 
+  dispatch({
+    type: "CLICK_MYPAGE",
+    payload: {
+      mypage: true,
+    },
+  });
+
   return (
     <div className={styles.container}>
       <h1>일기 목록</h1>
