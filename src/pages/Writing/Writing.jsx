@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./Writing.module.scss";
 import Navigation from "../../components/Navigation";
@@ -7,6 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Writing = ({ history }) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: "CLICK_WRITING",
+      payload: {
+        writing: true,
+      },
+    });
+  }, [dispatch]);
 
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
 
@@ -33,13 +42,6 @@ const Writing = ({ history }) => {
       default:
     }
   };
-
-  dispatch({
-    type: "CLICK_WRITING",
-    payload: {
-      writing: true,
-    },
-  });
 
   return (
     <>

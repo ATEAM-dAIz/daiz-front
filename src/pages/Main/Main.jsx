@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CalendarBox from "../../components/CalendarBox";
 import TextPreview from "../../components/TextPreview";
 import Navigation from "../../components/Navigation";
@@ -13,12 +13,15 @@ const Main = () => {
   const dispatch = useDispatch();
   const [fullScreen, setFullScreen] = useState(false);
 
-  dispatch({
-    type: "CLICK_MAIN",
-    payload: {
-      main: true,
-    },
-  });
+  useEffect(() => {
+    dispatch({
+      type: "CLICK_MAIN",
+      payload: {
+        main: true,
+      },
+    });
+  }, [dispatch]);
+
   return (
     <div className={fullScreen ? styles.dimmer : styles.container}>
       <CalendarBox fullScreen={fullScreen} />

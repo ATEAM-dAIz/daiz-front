@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import TextPreview from "../../components/TextPreview";
 import Navigation from "../../components/Navigation";
@@ -10,21 +10,23 @@ import { useDispatch } from "react-redux";
 const Mypage = () => {
   const dispatch = useDispatch();
 
-  function onClick() {
+  useEffect(() => {
+    dispatch({
+      type: "CLICK_MYPAGE",
+      payload: {
+        mypage: true,
+      },
+    });
+  }, [dispatch]);
+
+  const onClick = () => {
     dispatch({
       type: "LOGOUT_USER",
       payload: {
         isLoggedIn: false,
       },
     });
-  }
-
-  dispatch({
-    type: "CLICK_MYPAGE",
-    payload: {
-      mypage: true,
-    },
-  });
+  };
 
   return (
     <div className={styles.container}>
