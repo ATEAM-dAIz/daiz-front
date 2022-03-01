@@ -20,15 +20,16 @@ const Result = ({ location }) => {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [username, setUsername] = useState("");
   const [swipeUp, getSwipeUp] = useState(false);
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
 
   useEffect(() => {
     const get = async () => {
       await getDiaryDetail(refresh_token, diary_id).then((response) => {
-        console.log(response);
         setTitle(response["title"]);
         setContent(response["content"]);
+        setUsername(response["user"]);
       });
     };
     get();
@@ -49,11 +50,12 @@ const Result = ({ location }) => {
         />
         <h1 className={styles.commentTitle}>오늘의 코멘트</h1>
         <p className={styles.commentContent}>
-          OO님
+          {username.split("@")[0]}님
           <br />
           {/* 아침에 작성할 경우: 오늘 하루도 화이팅! */}
           오늘 하루도 수고하셨어요! <br />
-          현재 ㅇㅇ님은 [가족관계] 상황에 놓여져있고, [분노]를 느끼시고 있네요.
+          현재 {username.split("@")[0]}님은 [가족관계] 상황에 놓여져있고,
+          [분노]를 느끼시고 있네요.
           <br />
           <br />
           화가 폭발할 것 같을 때는 그 자리를 피하는 것도 좋은 방법이라고
