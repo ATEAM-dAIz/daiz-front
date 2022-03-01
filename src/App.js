@@ -9,6 +9,7 @@ import Writing from "./pages/Writing/Writing";
 import Analysis from "./pages/Analysis/Analysis";
 import Result from "./pages/Result/Result";
 import Mypage from "./pages/Mypage/Mypage";
+import ResetPw from "./pages/ResetPw/ResetPw";
 
 import PublicRoute from "./routers/PublicRoute";
 import PrivateRoute from "./routers/PrivateRoute";
@@ -19,6 +20,8 @@ function App() {
       <BrowserRouter>
         <PublicRoute restricted={true} exact path="/" component={Login} />
         <PublicRoute restricted={true} path="/signup" component={Signup} />
+        <PublicRoute path="/reset_password" component={ResetPw} />
+
         <PrivateRoute path="/main" component={Main} />
         <PrivateRoute path="/write" component={Writing} />
         <PrivateRoute path="/analysis" component={Analysis} />
