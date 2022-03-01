@@ -1,6 +1,6 @@
 import axios from "axios";
 import { serverURL } from "./ServerConst";
-import { checkAccessToken, requestAccessToken } from "./AuthService";
+import { checkAccessToken } from "./AuthService";
 
 export const postDiary = async (refresh_token, title, content) => {
   const access_token = await checkAccessToken(refresh_token);
