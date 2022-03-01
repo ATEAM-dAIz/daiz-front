@@ -10,6 +10,7 @@ import Analysis from "./pages/Analysis/Analysis";
 import Result from "./pages/Result/Result";
 import Mypage from "./pages/Mypage/Mypage";
 import ResetPwConfirm from "./pages/ResetPwConfirm/ResetPwConfirm";
+import ResetPw from "./pages/ResetPw/ResetPw";
 
 import PublicRoute from "./routers/PublicRoute";
 import PrivateRoute from "./routers/PrivateRoute";
@@ -20,6 +21,7 @@ function App() {
       <BrowserRouter>
         <PublicRoute restricted={true} exact path="/" component={Login} />
         <PublicRoute restricted={true} path="/signup" component={Signup} />
+        <PublicRoute path="/reset_password" component={ResetPw} />
         <PublicRoute
           path="/reset_password_confirm"
           component={ResetPwConfirm}
