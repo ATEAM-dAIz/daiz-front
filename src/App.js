@@ -20,7 +20,10 @@ function App() {
       <BrowserRouter>
         <PublicRoute restricted={true} exact path="/" component={Login} />
         <PublicRoute restricted={true} path="/signup" component={Signup} />
-        <PublicRoute path="/reset_password" component={ResetPwConfirm} />
+        <PublicRoute
+          path="/reset_password_confirm"
+          component={ResetPwConfirm}
+        />
 
         <PrivateRoute path="/main" component={Main} />
         <PrivateRoute path="/write" component={Writing} />
