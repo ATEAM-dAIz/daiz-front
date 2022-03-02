@@ -67,3 +67,17 @@ export const checkAccessToken = async (refresh_token) => {
     return axios.defaults.headers.common["Authorization"].split(" ")[1];
   }
 };
+
+export const resetPassword = async (email) => {
+  return await axios
+    .post(`${serverURL}/password/reset/`, {
+      email: email,
+    })
+    .then((response) => {
+      console.log(response);
+      return response.data;
+    })
+    .catch((e) => {
+      console.log(e.response.data);
+    });
+};
