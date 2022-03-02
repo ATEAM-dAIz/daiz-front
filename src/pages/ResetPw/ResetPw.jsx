@@ -9,6 +9,7 @@ const ResetPw = () => {
     <div className={styles.container}>
       <Logo className={styles.logo} />
       <form className={styles.column} noValidate>
+        <p>가입하신 이메일 주소로 비밀번호 재설정 링크가 전송됩니다.</p>
         <input
           name="email"
           type="email"
@@ -17,9 +18,8 @@ const ResetPw = () => {
           required
           className="input-account"
         />
-        <button className={`btn-main ${styles.loginBtn}`}>찾기</button>
+        <button className={`btn-main ${styles.confirmBtn}`}>찾기</button>
       </form>
-      <p>비밀번호는 가입시 입력하신 이메일을 통해 찾을 수 있습니다.</p>
     </div>
   );
 };
