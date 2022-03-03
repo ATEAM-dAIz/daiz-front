@@ -69,9 +69,12 @@ export const checkAccessToken = async (refresh_token) => {
 };
 
 export const resetPassword = async (email) => {
+  const body = JSON.stringify({ email });
   return await axios
-    .post(`${serverURL}/password/reset/`, {
-      email: email,
+    .post(`${serverURL}/password/reset/`, body, {
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
     .then((response) => {
       console.log(response);

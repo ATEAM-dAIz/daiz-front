@@ -28,11 +28,12 @@ const ResetPw = () => {
           name="email"
           type="email"
           placeholder="이메일"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
           className="input-account"
         />
-        <button className={`btn-main ${styles.confirmBtn}`} onSubmit={onSubmit}>
+        <button className={`btn-main ${styles.confirmBtn}`} type="submit">
           찾기
         </button>
       </form>
