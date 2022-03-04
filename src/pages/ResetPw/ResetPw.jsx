@@ -14,7 +14,7 @@ const ResetPw = () => {
       alert("이메일 형식을 입력하세요.");
     } else {
       await resetPassword(email).then((response) => {
-        console.log(response);
+        alert("이메일을 확인해 주세요.");
       });
     }
   }

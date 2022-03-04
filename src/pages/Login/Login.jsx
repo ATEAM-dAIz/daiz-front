@@ -82,7 +82,12 @@ const Login = ({ history }) => {
         <p className={styles.link} onClick={() => history.push("/signup")}>
           처음이신가요?
         </p>
-        <p className={styles.link}>비밀번호를 잊으셨나요?</p>
+        <p
+          className={styles.link}
+          onClick={() => history.push("/reset_password")}
+        >
+          비밀번호를 잊으셨나요?
+        </p>
       </div>
     </div>
   );
