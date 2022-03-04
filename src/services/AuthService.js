@@ -84,3 +84,25 @@ export const resetPassword = async (email) => {
       console.log(e.response.data);
     });
 };
+
+export const resetPasswordConfirm = async (
+  uid,
+  token,
+  new_password,
+  re_new_password
+) => {
+  const body = JSON.stringify({ uid, token, new_password, re_new_password });
+  return await axios
+    .post(`${serverURL}/password/reset/confirm/`, body, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      console.log(response);
+      return response.data;
+    })
+    .catch((e) => {
+      console.log(e.response.data);
+    });
+};
