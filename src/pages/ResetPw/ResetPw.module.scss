@@ -39,3 +39,22 @@
   color: #494949;
   text-align: center;
 }
+
+.loading {
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 3px solid $lightgray-color;
+  border-top: 3px solid $highlight-color;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

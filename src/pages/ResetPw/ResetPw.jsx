@@ -7,15 +7,18 @@ import styles from "./ResetPw.module.scss";
 
 const ResetPw = () => {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function onSubmit(e) {
     e.preventDefault(); //prevent initialization input
     if (!email.includes("@")) {
       alert("이메일 형식을 입력하세요.");
     } else {
-      await resetPassword(email).then((response) => {
+      setLoading(true);
+      await resetPassword(email).then(() => {
         alert("이메일을 확인해 주세요.");
       });
+      setLoading(false);
     }
   }
 
@@ -34,7 +37,7 @@ const ResetPw = () => {
           className="input-account"
         />
         <button className={`btn-main ${styles.confirmBtn}`} type="submit">
-          찾기
+          {loading ? <div className={styles.loading}></div> : "찾기"}
         </button>
       </form>
     </div>
