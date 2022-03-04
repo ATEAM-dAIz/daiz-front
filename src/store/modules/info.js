@@ -10,6 +10,7 @@ export const logout = () => ({ type: LOGOUT_USER });
 const initialState = {
   email: "",
   refresh_token: "",
+  username: "",
   isLoggedIn: false,
 };
 
@@ -17,11 +18,11 @@ const initialState = {
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case "LOGIN_USER":
-      console.log(state);
       return {
         ...state,
         email: action.payload.email,
         refresh_token: action.payload.refresh_token,
+        username: action.payload.username,
         isLoggedIn: action.payload.isLoggedIn,
       };
 
