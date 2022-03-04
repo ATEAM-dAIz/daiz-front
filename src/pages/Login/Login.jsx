@@ -43,6 +43,7 @@ const Login = ({ history }) => {
         payload: {
           email: result["user"]["email"],
           refresh_token: result["refresh_token"],
+          username: result["user"]["name"],
           isLoggedIn: true,
         },
       });
