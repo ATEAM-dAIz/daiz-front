@@ -9,7 +9,7 @@ const ResetPw = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault(); //prevent initialization input
     if (!email.includes("@")) {
       alert("이메일 형식을 입력하세요.");
@@ -20,7 +20,7 @@ const ResetPw = () => {
       });
       setLoading(false);
     }
-  }
+  };
 
   return (
     <div className={styles.container}>

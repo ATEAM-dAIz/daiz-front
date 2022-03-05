@@ -12,7 +12,7 @@ const Login = ({ history }) => {
 
   const dispatch = useDispatch();
 
-  function changeInput(e) {
+  const changeInput = (e) => {
     const {
       target: { name, value },
     } = e;
@@ -26,9 +26,9 @@ const Login = ({ history }) => {
 
       default:
     }
-  }
+  };
 
-  async function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault(); //prevent initialization input
     if (!email.includes("@")) {
       alert("이메일 형식을 입력하세요.");
@@ -51,7 +51,7 @@ const Login = ({ history }) => {
         ? history.push("/main")
         : alert("정보 불러오기 실패");
     }
-  }
+  };
 
   return (
     <div className={styles.container}>

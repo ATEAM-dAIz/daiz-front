@@ -10,7 +10,7 @@ const Signup = ({ history }) => {
   const [rePw, setRePw] = useState("");
   const [name, setName] = useState("");
 
-  function changeInput(e) {
+  const changeInput = (e) => {
     const {
       target: { name, value },
     } = e;
@@ -29,9 +29,9 @@ const Signup = ({ history }) => {
         break;
       default:
     }
-  }
+  };
 
-  async function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault(); //prevent initialization input
 
     if (!email.includes("@")) {
@@ -48,7 +48,7 @@ const Signup = ({ history }) => {
         alert(response);
       }
     }
-  }
+  };
 
   return (
     <div className={styles.container}>

@@ -11,14 +11,14 @@ const ResetPw = () => {
   const [newPw, setNewPw] = useState("");
   const [reNewPw, setReNewPw] = useState("");
 
-  async function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault();
     await resetPasswordConfirm(newPw, reNewPw, uid, token).then(() =>
       newPw !== reNewPw
         ? alert("비밀번호가 일치하지 않습니다.")
         : history.push("/")
     );
-  }
+  };
 
   return (
     <div className={styles.container}>
