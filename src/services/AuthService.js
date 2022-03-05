@@ -2,23 +2,16 @@ import axios from "axios";
 import { serverURL } from "./ServerConst";
 
 export const requestSignup = async (email, name, pw, rePw) => {
-  await axios
+  return await axios
     .post(`${serverURL}/signup/`, {
       email: email,
       name: name,
       password1: pw,
       password2: rePw,
     })
-    .then((response) => {
-      console.log(response.data);
-    })
     .catch((e) => {
-      console.log(e.response.data);
-      // if (Object.keys(e.response.data).includes("email")) {
-      //   return "중복된 이메일이 존재합니다.";
-      // }
-      console.error(e);
-      return "예기치 못한 에러가 발생했습니다.";
+      alert(e.response.data.email);
+      return "error";
     });
 };
 

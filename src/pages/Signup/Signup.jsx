@@ -34,19 +34,11 @@ const Signup = ({ history }) => {
   const onSubmit = async (e) => {
     e.preventDefault(); //prevent initialization input
 
-    if (!email.includes("@")) {
-      alert("이메일 형식을 입력하세요.");
-    } else if (rePw !== pw) {
-      alert("비밀번호를 확인하세요.");
-    } else {
-      let response = await requestSignup(email, name, pw, rePw);
-      if (typeof response !== "string") {
-        // login(response);
-        alert("가입이 완료되었습니다!");
-        history.push("/");
-      } else {
-        alert(response);
-      }
+    if (!email.includes("@")) alert("이메일 형식을 입력하세요.");
+    else if (rePw !== pw) alert("비밀번호를 확인하세요.");
+    else {
+      const response = await requestSignup(email, name, pw, rePw);
+      response !== "error" && history.push("/main");
     }
   };
 
