@@ -23,7 +23,7 @@ function App() {
         <PublicRoute restricted={true} path="/signup" component={Signup} />
         <PublicRoute path="/reset_password" component={ResetPw} />
         <PublicRoute
-          path="/password/reset/confirm/:uid/:token"
+          path="/password/reset/:uid/:token"
           component={ResetPwConfirm}
         />
 
