@@ -12,7 +12,7 @@ const Writing = ({ history }) => {
     dispatch({
       type: "CLICK_WRITING",
       payload: {
-        writing: true,
+        writing: "true",
       },
     });
   }, [dispatch]);

@@ -10,9 +10,9 @@ export const clickMypage = () => ({ type: CLICK_MYPAGE });
 
 // 모듈 초기 상태
 const initialState = {
-  main: false,
-  writing: false,
-  mypage: false,
+  main: "",
+  writing: "",
+  mypage: "",
 };
 
 // 리듀서

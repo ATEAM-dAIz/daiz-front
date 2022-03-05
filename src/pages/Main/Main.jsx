@@ -17,7 +17,7 @@ const Main = () => {
     dispatch({
       type: "CLICK_MAIN",
       payload: {
-        main: true,
+        main: "true",
       },
     });
   }, [dispatch]);

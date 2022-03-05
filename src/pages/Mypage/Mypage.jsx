@@ -14,7 +14,7 @@ const Mypage = () => {
     dispatch({
       type: "CLICK_MYPAGE",
       payload: {
-        mypage: true,
+        mypage: "true",
       },
     });
   }, [dispatch]);
