@@ -85,13 +85,13 @@ export const resetPassword = async (email) => {
     });
 };
 
-export const resetPasswordConfirm = async (
-  uid,
-  token,
-  new_password,
-  re_new_password
-) => {
-  const body = JSON.stringify({ uid, token, new_password, re_new_password });
+export const resetPasswordConfirm = async (newPw, reNewPw, uid, token) => {
+  const body = JSON.stringify({
+    new_password1: newPw,
+    new_password2: reNewPw,
+    uid,
+    token,
+  });
   return await axios
     .post(`${serverURL}/password/reset/confirm/`, body, {
       headers: {
@@ -99,7 +99,7 @@ export const resetPasswordConfirm = async (
       },
     })
     .then((response) => {
-      console.log(response);
+      console.log("변경 완료");
       return response.data;
     })
     .catch((e) => {
