@@ -6,7 +6,7 @@ $lightgray-color: #8e8e8e;
 @mixin input($width, $height, $border-radius) {
   width: $width;
   height: $height;
-  margin-top: 32px;
+  margin-bottom: 32px;
   padding-left: 20px;
   border: 1px solid $lightgray-color;
   border-radius: $border-radius;
