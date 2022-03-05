@@ -1,7 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { changePassword } from "../../services/AuthService";
+import { useHistory } from "react-router-dom";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+
+import styles from "./ChangePw.module.scss";
 
 const ChangePw = () => {
-  return <div>비밀번호 변경</div>;
+  const history = useHistory();
+  const [newPw, setNewPw] = useState("");
+  const [reNewPw, setReNewPw] = useState("");
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await changePassword(newPw, reNewPw).then(() =>
+      newPw !== reNewPw
+        ? alert("비밀번호가 일치하지 않습니다.")
+        : history.push("/main") && alert("비밀번호가 변경 되었습니다.")
+    );
+  };
+
+  return (
+    <div className={styles.container}>
+      <Logo className={styles.logo} />
+      <form className={styles.column} onSubmit={onSubmit} noValidate>
+        <input
+          name="password"
+          type="password"
+          placeholder="새 비밀번호"
+          onChange={(e) => setNewPw(e.target.value)}
+          required
+          className="input-account"
+        />
+        <input
+          name="password2"
+          type="password"
+          placeholder="새 비밀번호 확인"
+          onChange={(e) => setReNewPw(e.target.value)}
+          required
+          className="input-account"
+        />
+        <button className={`btn-main ${styles.confirmBtn}`}>
+          비밀번호 변경
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default ChangePw;

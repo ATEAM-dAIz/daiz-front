@@ -6,9 +6,11 @@ import Navigation from "../../components/Navigation";
 import styles from "./Mypage.module.scss";
 
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const Mypage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch({
@@ -34,6 +36,12 @@ const Mypage = () => {
       {/* 로그아웃 위치 미정 */}
       <div className={styles.btnLogout} onClick={onClick}>
         로그아웃
+      </div>
+      <div
+        className={styles.btnLogout}
+        onClick={() => history.push("/change_password")}
+      >
+        비밀번호 변경
       </div>
       <div className={styles.mySwiper}>
         {}

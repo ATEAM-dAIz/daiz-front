@@ -99,3 +99,23 @@ export const resetPasswordConfirm = async (newPw, reNewPw, uid, token) => {
       console.log(e.response.data);
     });
 };
+
+export const changePassword = async (newPw, reNewPw) => {
+  const body = JSON.stringify({
+    new_password1: newPw,
+    new_password2: reNewPw,
+  });
+  return await axios
+    .post(`${serverURL}/password/change/`, body, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      console.log("변경 완료");
+      return response.data;
+    })
+    .catch((e) => {
+      console.log(e.response.data);
+    });
+};
