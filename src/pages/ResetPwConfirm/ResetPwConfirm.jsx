@@ -24,7 +24,9 @@ const ResetPw = () => {
           required
           className="input-account"
         />
-        <button className={`btn-main ${styles.loginBtn}`}>비밀번호 변경</button>
+        <button className={`btn-main ${styles.confirmBtn}`}>
+          비밀번호 변경
+        </button>
       </form>
     </div>
   );
