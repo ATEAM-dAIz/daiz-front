@@ -11,6 +11,7 @@ import Result from "./pages/Result/Result";
 import Mypage from "./pages/Mypage/Mypage";
 import ResetPwConfirm from "./pages/ResetPwConfirm/ResetPwConfirm";
 import ResetPw from "./pages/ResetPw/ResetPw";
+import ChangePw from "./pages/ChangePw/ChangePw";
 
 import PublicRoute from "./routers/PublicRoute";
 import PrivateRoute from "./routers/PrivateRoute";
@@ -32,6 +33,7 @@ function App() {
         <PrivateRoute path="/analysis" component={Analysis} />
         <PrivateRoute path="/result" component={Result} />
         <PrivateRoute path="/mypage" component={Mypage} />
+        <PrivateRoute path="/change_password" component={ChangePw} />
       </BrowserRouter>
     </div>
   );
