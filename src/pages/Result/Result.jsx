@@ -19,6 +19,7 @@ const Result = ({ location }) => {
   }
 
   const [loading, setLoading] = useState(false);
+  const [wait, setWait] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [swipeUp, getSwipeUp] = useState(false);
@@ -37,6 +38,16 @@ const Result = ({ location }) => {
     get();
   }, [refresh_token, diary_id]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setWait(true);
+    }, 18);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [wait]);
+
   return (
     <div className={styles.container}>
       {!loading && (
@@ -46,26 +57,30 @@ const Result = ({ location }) => {
           <hr />
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.content}>{content}</p>
-          <div className={swipeUp ? styles.extended : styles.commentContainer}>
-            <FontAwesomeIcon
-              icon={swipeUp ? faChevronDown : faChevronUp}
-              className={styles.chevronUp}
-              onClick={() => getSwipeUp(!swipeUp)}
-            />
-            <h1 className={styles.commentTitle}>오늘의 코멘트</h1>
-            <p className={styles.commentContent}>
-              {username}님
-              <br />
-              {/* 아침에 작성할 경우: 오늘 하루도 화이팅! */}
-              오늘 하루도 수고하셨어요! <br />
-              현재 {username}님은 [가족관계] 상황에 놓여져있고, [분노]를
-              느끼시고 있네요.
-              <br />
-              <br />
-              화가 폭발할 것 같을 때는 그 자리를 피하는 것도 좋은 방법이라고
-              생각해요
-            </p>
-          </div>
+          {wait && (
+            <div
+              className={swipeUp ? styles.extended : styles.commentContainer}
+            >
+              <FontAwesomeIcon
+                icon={swipeUp ? faChevronDown : faChevronUp}
+                className={styles.chevronUp}
+                onClick={() => getSwipeUp(!swipeUp)}
+              />
+              <h1 className={styles.commentTitle}>오늘의 코멘트</h1>
+              <p className={styles.commentContent}>
+                {username}님
+                <br />
+                {/* 아침에 작성할 경우: 오늘 하루도 화이팅! */}
+                오늘 하루도 수고하셨어요! <br />
+                현재 {username}님은 [가족관계] 상황에 놓여져있고, [분노]를
+                느끼시고 있네요.
+                <br />
+                <br />
+                화가 폭발할 것 같을 때는 그 자리를 피하는 것도 좋은 방법이라고
+                생각해요
+              </p>
+            </div>
+          )}
         </div>
       )}
       {loading && <div className={styles.loading}></div>}
