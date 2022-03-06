@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { changePassword } from "../../services/AuthService";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 
@@ -10,13 +11,12 @@ const ChangePw = () => {
   const history = useHistory();
   const [newPw, setNewPw] = useState("");
   const [reNewPw, setReNewPw] = useState("");
+  const refresh_token = useSelector((state) => state.userReducer.refresh_token);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await changePassword(newPw, reNewPw).then(() =>
-      newPw !== reNewPw
-        ? alert("비밀번호가 일치하지 않습니다.")
-        : history.push("/main") && alert("비밀번호가 변경 되었습니다.")
+    await changePassword(newPw, reNewPw, refresh_token).then(() =>
+      history.push("/main")
     );
   };
 

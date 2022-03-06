@@ -92,7 +92,7 @@ export const resetPasswordConfirm = async (newPw, reNewPw, uid, token) => {
       },
     })
     .then((response) => {
-      console.log("변경 완료");
+      alert("새 비밀번호로 로그인 해주세요.");
       return response.data;
     })
     .catch((e) => {
@@ -100,22 +100,31 @@ export const resetPasswordConfirm = async (newPw, reNewPw, uid, token) => {
     });
 };
 
-export const changePassword = async (newPw, reNewPw) => {
-  const body = JSON.stringify({
-    new_password1: newPw,
-    new_password2: reNewPw,
-  });
-  return await axios
-    .post(`${serverURL}/password/change/`, body, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    .then((response) => {
-      console.log("변경 완료");
-      return response.data;
-    })
-    .catch((e) => {
-      console.log(e.response.data);
-    });
+export const changePassword = async (newPw, reNewPw, refresh_token) => {
+  if (newPw !== reNewPw) alert("비밀번호가 일치하지 않습니다.");
+  else {
+    const access_token = await checkAccessToken(refresh_token).then(
+      (response) => {
+        return response;
+      }
+    );
+    const body = {
+      new_password1: newPw,
+      new_password2: reNewPw,
+    };
+
+    return await axios
+      .post(`${serverURL}/password/change/`, body, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+      .then(() => {
+        alert("비밀번호가 변경되었습니다.");
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+      });
+  }
 };
