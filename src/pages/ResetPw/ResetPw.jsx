@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { resetPassword } from "../../services/AuthService";
@@ -24,12 +24,18 @@ const ResetPw = () => {
 
   return (
     <div className={styles.container}>
-      <Logo className={styles.logo} />
+      {useMemo(
+        () => (
+          <Logo className={styles.logo} />
+        ),
+        []
+      )}
       <form className={styles.column} onSubmit={onSubmit} noValidate>
         <p>가입하신 이메일 주소로 비밀번호 재설정 링크가 전송됩니다.</p>
         <input
           name="email"
           type="email"
+          autoComplete="current-email"
           placeholder="이메일"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

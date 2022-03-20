@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { requestSignup } from "../../services/AuthService";
@@ -44,12 +44,18 @@ const Signup = ({ history }) => {
 
   return (
     <div className={styles.container}>
-      <Logo className={styles.logo} />
+      {useMemo(
+        () => (
+          <Logo className={styles.logo} />
+        ),
+        []
+      )}
       <form className={styles.column} onSubmit={onSubmit} noValidate>
         <input
           value={email}
           name="email"
           type="email"
+          autoComplete="new-email"
           placeholder="이메일"
           className="input-account"
           onChange={changeInput}
@@ -59,6 +65,7 @@ const Signup = ({ history }) => {
           value={pw}
           name="password"
           type="password"
+          autoComplete="new-password"
           placeholder="비밀번호"
           className="input-account"
           onChange={changeInput}
@@ -68,6 +75,7 @@ const Signup = ({ history }) => {
           value={rePw}
           name="reEnterPassword"
           type="password"
+          autoComplete="new-password"
           placeholder="비밀번호 확인"
           className="input-account"
           onChange={changeInput}
@@ -77,6 +85,7 @@ const Signup = ({ history }) => {
           value={name}
           name="name"
           type="text"
+          autoComplete="new-name"
           placeholder="닉네임"
           className="input-account"
           onChange={changeInput}

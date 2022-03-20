@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import styles from "./Writing.module.scss";
 import TabBar from "../../components/TabBar";
@@ -8,6 +8,8 @@ import { clickWriting } from "../../store/modules/tab_bar";
 
 const Writing = ({ history }) => {
   const dispatch = useDispatch();
+
+  console.log("writing 렌더링");
 
   useEffect(() => {
     dispatch(clickWriting("true"));
@@ -20,7 +22,7 @@ const Writing = ({ history }) => {
   const [content, setContent] = useState("");
   const [existingContent, setExistingContent] = useState(false);
 
-  const changeInput = (e) => {
+  const changeInput = useCallback((e) => {
     const {
       target: { name, value },
     } = e;
@@ -37,7 +39,7 @@ const Writing = ({ history }) => {
 
       default:
     }
-  };
+  }, []);
 
   return (
     <>

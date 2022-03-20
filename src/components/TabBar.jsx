@@ -38,4 +38,4 @@ const TabBar = () => {
   );
 };
 
-export default TabBar;
+export default React.memo(TabBar);

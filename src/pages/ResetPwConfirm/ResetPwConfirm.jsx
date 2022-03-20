@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { resetPasswordConfirm } from "../../services/AuthService";
@@ -22,11 +22,17 @@ const ResetPw = () => {
 
   return (
     <div className={styles.container}>
-      <Logo className={styles.logo} />
+      {useMemo(
+        () => (
+          <Logo className={styles.logo} />
+        ),
+        []
+      )}
       <form className={styles.column} onSubmit={onSubmit} noValidate>
         <input
           name="password"
           type="password"
+          autoComplete="new-password"
           placeholder="새 비밀번호"
           onChange={(e) => setNewPw(e.target.value)}
           required
@@ -35,6 +41,7 @@ const ResetPw = () => {
         <input
           name="password2"
           type="password"
+          autoComplete="new-password"
           placeholder="새 비밀번호 확인"
           onChange={(e) => setReNewPw(e.target.value)}
           required

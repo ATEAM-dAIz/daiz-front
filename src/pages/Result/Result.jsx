@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import styles from "./Result.module.scss";
 import TabBar from "../../components/TabBar";
@@ -25,6 +25,10 @@ const Result = ({ location }) => {
   const [swipeUp, getSwipeUp] = useState(false);
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
   const username = useSelector((state) => state.userReducer.username);
+
+  const onClick = useCallback(() => {
+    getSwipeUp(!swipeUp);
+  }, [swipeUp]);
 
   useEffect(() => {
     const get = async () => {
@@ -64,7 +68,7 @@ const Result = ({ location }) => {
               <FontAwesomeIcon
                 icon={swipeUp ? faChevronDown : faChevronUp}
                 className={styles.chevronUp}
-                onClick={() => getSwipeUp(!swipeUp)}
+                onClick={onClick}
               />
               <h1 className={styles.commentTitle}>오늘의 코멘트</h1>
               <p className={styles.commentContent}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CalendarBox from "../../components/CalendarBox";
 import TextPreview from "../../components/TextPreview";
 import TabBar from "../../components/TabBar";
@@ -14,6 +14,10 @@ const Main = () => {
   const dispatch = useDispatch();
   const [fullScreen, setFullScreen] = useState(false);
 
+  const onClick = useCallback(() => {
+    setFullScreen(!fullScreen);
+  }, [fullScreen]);
+
   useEffect(() => {
     dispatch(clickMain("true"));
   }, [dispatch]);
@@ -25,7 +29,7 @@ const Main = () => {
       <FontAwesomeIcon
         icon={fullScreen ? faCompressAlt : faExpandAlt}
         className={styles.fullScreenBtn}
-        onClick={() => setFullScreen(!fullScreen)}
+        onClick={onClick}
       />
 
       <div className={fullScreen ? styles.mySwiperMoved : styles.mySwiper}>

@@ -9,6 +9,8 @@ const CalendarBox = ({ fullScreen }) => {
   const marks = useSelector((state) => state.diaryReducer);
   const [value, onChange] = useState(new Date());
 
+  console.log("caledndarBaox 렌더링");
+
   return (
     <div className="calendar-container">
       {fullScreen ? (
@@ -18,7 +20,7 @@ const CalendarBox = ({ fullScreen }) => {
           onChange={onChange}
           value={value}
           locale="en-EN"
-          tileClassName={({ date, view }) => {
+          tileClassName={({ date }) => {
             if (marks.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
               return "highlight";
             }

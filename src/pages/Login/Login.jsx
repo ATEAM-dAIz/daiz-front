@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import { useDispatch } from "react-redux";
 
@@ -30,7 +30,7 @@ const Login = ({ history }) => {
   };
 
   const onSubmit = async (e) => {
-    e.preventDefault(); //prevent initialization input
+    e.preventDefault();
     if (!email.includes("@")) {
       alert("이메일 형식을 입력하세요.");
     } else {
@@ -55,12 +55,17 @@ const Login = ({ history }) => {
 
   return (
     <div className={styles.container}>
-      <Logo className={styles.logo} />
+      {useMemo(
+        () => (
+          <Logo className={styles.logo} />
+        ),
+        []
+      )}
       <form className={styles.column} onSubmit={onSubmit} noValidate>
         <input
           name="email"
           type="email"
-          autoComplete="current-password"
+          autoComplete="current-email"
           placeholder="이메일"
           onChange={changeInput}
           required
