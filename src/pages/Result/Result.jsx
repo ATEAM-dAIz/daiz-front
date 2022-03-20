@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import styles from "./Result.module.scss";
-import Navigation from "../../components/Navigation";
+import TabBar from "../../components/TabBar";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -84,7 +84,7 @@ const Result = ({ location }) => {
         </div>
       )}
       {loading && <div className={styles.loading}></div>}
-      <Navigation />
+      <TabBar />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import Navigation from "../../components/Navigation";
+import TabBar from "../../components/TabBar";
 
 import styles from "./Analysis.module.scss";
 
@@ -73,7 +73,7 @@ const Analysis = ({ history }) => {
         </svg>
       </div>
 
-      <Navigation />
+      <TabBar />
     </div>
   );
 };

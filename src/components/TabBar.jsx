@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import styles from "./Navigation.module.scss";
+import styles from "./TabBar.module.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,11 +11,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 
-const Navigation = () => {
+const TabBar = () => {
   const history = useHistory();
-  const mainBtn = useSelector((state) => state.navigationReducer.main);
-  const writingBtn = useSelector((state) => state.navigationReducer.writing);
-  const mypageBtn = useSelector((state) => state.navigationReducer.mypage);
+  const mainBtn = useSelector((state) => state.tabBarReducer.main);
+  const writingBtn = useSelector((state) => state.tabBarReducer.writing);
+  const mypageBtn = useSelector((state) => state.tabBarReducer.mypage);
 
   return (
     <div className={styles.icons}>
@@ -38,4 +38,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default TabBar;
