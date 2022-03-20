@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import { getDiary } from "../services/DiaryService";
 import { useDispatch, useSelector } from "react-redux";
+import { insertDate } from "../store/modules/diary";
 
 const TextPreview = () => {
   const dispatch = useDispatch();
@@ -25,12 +26,7 @@ const TextPreview = () => {
       const response = await getDiary(refresh_token);
       const dateArray = createCalendar(response);
       setDiary([...response]);
-      dispatch({
-        type: "INSERT_DATE",
-        payload: {
-          date: dateArray,
-        },
-      });
+      dispatch(insertDate(dateArray));
     };
 
     get();

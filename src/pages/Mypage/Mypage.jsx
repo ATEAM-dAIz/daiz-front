@@ -1,40 +1,28 @@
 import React, { useEffect } from "react";
 
 import TextPreview from "../../components/TextPreview";
-import Navigation from "../../components/Navigation";
+import TabBar from "../../components/TabBar";
 
 import styles from "./Mypage.module.scss";
 
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { logout } from "../../store/modules/info";
+import { clickMypage } from "../../store/modules/tab_bar";
 
 const Mypage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
-    dispatch({
-      type: "CLICK_MYPAGE",
-      payload: {
-        mypage: "true",
-      },
-    });
+    dispatch(clickMypage("true"));
   }, [dispatch]);
-
-  const onClick = () => {
-    dispatch({
-      type: "LOGOUT_USER",
-      payload: {
-        isLoggedIn: false,
-      },
-    });
-  };
 
   return (
     <div className={styles.container}>
       <h1>일기 목록</h1>
       {/* 로그아웃 위치 미정 */}
-      <div className={styles.btnLogout} onClick={onClick}>
+      <div className={styles.btnLogout} onClick={() => dispatch(logout())}>
         로그아웃
       </div>
       <div
@@ -48,7 +36,7 @@ const Mypage = () => {
         <TextPreview />
       </div>
 
-      <Navigation className={styles.navigation} />
+      <TabBar />
     </div>
   );
 };

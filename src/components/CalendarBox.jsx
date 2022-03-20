@@ -6,7 +6,7 @@ import "./CalendarBox.scss";
 import { useSelector } from "react-redux";
 
 const CalendarBox = ({ fullScreen }) => {
-  const marks = useSelector((state) => state.diaryReducer.date);
+  const marks = useSelector((state) => state.diaryReducer);
   const [value, onChange] = useState(new Date());
 
   return (

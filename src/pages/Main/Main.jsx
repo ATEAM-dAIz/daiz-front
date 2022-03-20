@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react";
 import CalendarBox from "../../components/CalendarBox";
 import TextPreview from "../../components/TextPreview";
-import Navigation from "../../components/Navigation";
+import TabBar from "../../components/TabBar";
 
 import styles from "./Main.module.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExpandAlt, faCompressAlt } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
+import { clickMain } from "../../store/modules/tab_bar";
 
 const Main = () => {
   const dispatch = useDispatch();
   const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
-    dispatch({
-      type: "CLICK_MAIN",
-      payload: {
-        main: "true",
-      },
-    });
+    dispatch(clickMain("true"));
   }, [dispatch]);
 
   return (
@@ -36,7 +32,7 @@ const Main = () => {
         <TextPreview />
       </div>
 
-      <Navigation fullScreen={fullScreen} />
+      <TabBar fullScreen={fullScreen} />
     </div>
   );
 };

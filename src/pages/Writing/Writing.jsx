@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 import styles from "./Writing.module.scss";
-import Navigation from "../../components/Navigation";
+import TabBar from "../../components/TabBar";
 import { postDiary } from "../../services/DiaryService";
 import { useDispatch, useSelector } from "react-redux";
+import { clickWriting } from "../../store/modules/tab_bar";
 
 const Writing = ({ history }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: "CLICK_WRITING",
-      payload: {
-        writing: "true",
-      },
-    });
+    dispatch(clickWriting("true"));
   }, [dispatch]);
 
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
@@ -101,7 +97,7 @@ const Writing = ({ history }) => {
         </form>
       </div>
 
-      <Navigation />
+      <TabBar />
     </>
   );
 };

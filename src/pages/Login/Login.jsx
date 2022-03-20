@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { requestLogin } from "../../services/AuthService";
+import { login } from "../../store/modules/info";
 import styles from "./Login.module.scss";
 
 const Login = ({ history }) => {
@@ -38,15 +39,14 @@ const Login = ({ history }) => {
         result = response;
       });
 
-      dispatch({
-        type: "LOGIN_USER",
-        payload: {
-          email: result["user"]["email"],
-          refresh_token: result["refresh_token"],
-          username: result["user"]["name"],
-          isLoggedIn: true,
-        },
-      });
+      dispatch(
+        login(
+          result["user"]["email"],
+          result["refresh_token"],
+          result["user"]["name"],
+          true
+        )
+      );
       result["user"]["email"]
         ? history.push("/main")
         : alert("정보 불러오기 실패");
@@ -60,6 +60,7 @@ const Login = ({ history }) => {
         <input
           name="email"
           type="email"
+          autoComplete="current-password"
           placeholder="이메일"
           onChange={changeInput}
           required
@@ -68,6 +69,7 @@ const Login = ({ history }) => {
         <input
           name="password"
           type="password"
+          autoComplete="current-password"
           placeholder="비밀번호"
           onChange={changeInput}
           required

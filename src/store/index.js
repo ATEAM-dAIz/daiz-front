@@ -7,7 +7,7 @@ import storage from "redux-persist/lib/storage";
 
 import userReducer from "./modules/info";
 import diaryReducer from "./modules/diary";
-import navigationReducer from "./modules/navigation";
+import tabBarReducer from "./modules/tab_bar";
 
 const persistConfig = {
   key: "root",
@@ -18,7 +18,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   userReducer,
   diaryReducer,
-  navigationReducer,
+  tabBarReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
