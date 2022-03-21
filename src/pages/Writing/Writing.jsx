@@ -9,11 +9,7 @@ import { clickWriting } from "../../store/modules/tab_bar";
 const Writing = ({ history }) => {
   const dispatch = useDispatch();
 
-  console.log("writing 렌더링");
-
-  useEffect(() => {
-    dispatch(clickWriting("true"));
-  }, [dispatch]);
+  useEffect(() => dispatch(clickWriting("true")), [dispatch]);
 
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
 
@@ -51,7 +47,6 @@ const Writing = ({ history }) => {
             name="title"
             type="text"
             placeholder="제목"
-            // required
             className="input-writing--title"
             onChange={changeInput}
           />

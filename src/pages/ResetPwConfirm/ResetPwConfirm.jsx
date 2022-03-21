@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { resetPasswordConfirm } from "../../services/AuthService";
@@ -10,6 +10,21 @@ const ResetPw = () => {
   const { uid, token } = useParams();
   const [newPw, setNewPw] = useState("");
   const [reNewPw, setReNewPw] = useState("");
+
+  const onChange = useCallback((e) => {
+    const {
+      target: { name, value },
+    } = e;
+    switch (name) {
+      case "password":
+        setNewPw(value);
+        break;
+      case "re-password":
+        setReNewPw(value);
+        break;
+      default:
+    }
+  }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -34,16 +49,16 @@ const ResetPw = () => {
           type="password"
           autoComplete="new-password"
           placeholder="새 비밀번호"
-          onChange={(e) => setNewPw(e.target.value)}
+          onChange={onChange}
           required
           className="input-account"
         />
         <input
-          name="password2"
+          name="re-password"
           type="password"
           autoComplete="new-password"
           placeholder="새 비밀번호 확인"
-          onChange={(e) => setReNewPw(e.target.value)}
+          onChange={onChange}
           required
           className="input-account"
         />

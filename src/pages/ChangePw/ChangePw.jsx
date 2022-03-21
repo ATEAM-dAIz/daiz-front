@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 import { changePassword } from "../../services/AuthService";
 import { useSelector } from "react-redux";
@@ -12,6 +12,21 @@ const ChangePw = () => {
   const [newPw, setNewPw] = useState("");
   const [reNewPw, setReNewPw] = useState("");
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
+
+  const onChange = useCallback((e) => {
+    const {
+      target: { name, value },
+    } = e;
+    switch (name) {
+      case "password":
+        setNewPw(value);
+        break;
+      case "re-password":
+        setReNewPw(value);
+        break;
+      default:
+    }
+  }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -34,16 +49,16 @@ const ChangePw = () => {
           type="password"
           autoComplete="current-password"
           placeholder="새 비밀번호"
-          onChange={(e) => setNewPw(e.target.value)}
+          onChange={onChange}
           required
           className="input-account"
         />
         <input
-          name="password2"
+          name="re-password"
           type="password"
           autoComplete="current-password"
           placeholder="새 비밀번호 확인"
-          onChange={(e) => setReNewPw(e.target.value)}
+          onChange={onChange}
           required
           className="input-account"
         />

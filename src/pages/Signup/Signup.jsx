@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { requestSignup } from "../../services/AuthService";
@@ -10,7 +10,7 @@ const Signup = ({ history }) => {
   const [rePw, setRePw] = useState("");
   const [name, setName] = useState("");
 
-  const changeInput = (e) => {
+  const changeInput = useCallback((e) => {
     const {
       target: { name, value },
     } = e;
@@ -29,10 +29,10 @@ const Signup = ({ history }) => {
         break;
       default:
     }
-  };
+  }, []);
 
   const onSubmit = async (e) => {
-    e.preventDefault(); //prevent initialization input
+    e.preventDefault();
 
     if (!email.includes("@")) alert("이메일 형식을 입력하세요.");
     else if (rePw !== pw) alert("비밀번호를 확인하세요.");

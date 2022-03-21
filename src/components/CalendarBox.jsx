@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import Calendar from "react-calendar";
-import moment from "moment";
 
 import "./CalendarBox.scss";
 import { useSelector } from "react-redux";
+import { isMatch } from "date-fns";
 
 const CalendarBox = ({ fullScreen }) => {
   const marks = useSelector((state) => state.diaryReducer);
-  const [value, onChange] = useState(new Date());
-
-  console.log("caledndarBaox 렌더링");
 
   return (
     <div className="calendar-container">
@@ -17,13 +14,13 @@ const CalendarBox = ({ fullScreen }) => {
         ""
       ) : (
         <Calendar
-          onChange={onChange}
-          value={value}
-          locale="en-EN"
           tileClassName={({ date }) => {
-            if (marks.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-              return "highlight";
-            }
+            date = date
+              .toLocaleDateString("en-GB")
+              .split("/")
+              .reverse()
+              .join("-");
+            if (marks.find((mark) => isMatch(mark, date))) return "highlight";
           }}
         />
       )}

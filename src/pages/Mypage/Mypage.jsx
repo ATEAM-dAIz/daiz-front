@@ -14,14 +14,11 @@ const Mypage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    dispatch(clickMypage("true"));
-  }, [dispatch]);
+  useEffect(() => dispatch(clickMypage("true")), [dispatch]);
 
   return (
     <div className={styles.container}>
       <h1>일기 목록</h1>
-      {/* 로그아웃 위치 미정 */}
       <div className={styles.btnLogout} onClick={() => dispatch(logout())}>
         로그아웃
       </div>
@@ -32,7 +29,6 @@ const Mypage = () => {
         비밀번호 변경
       </div>
       <div className={styles.mySwiper}>
-        {}
         <TextPreview />
       </div>
 
