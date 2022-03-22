@@ -33,3 +33,9 @@
   overflow-y: scroll;
   // animation: slidein 3s linear 1s;
 }
+
+@include tablet {
+  .mySwiper {
+    height: 60%;
+  }
+}

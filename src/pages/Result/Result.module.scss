@@ -27,14 +27,17 @@ hr {
 }
 
 .commentContainer {
+  width: 100%;
+  bottom: 0;
+  position: absolute;
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
-  transform: translateY(450px);
+  // transform: translateY(450px);
   box-shadow: 2px -4px 19px #f3a95f;
 }
 .extended {
   position: relative;
-  height: 700px;
+  height: 100vh;
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
   // transform: translateY(-190px);

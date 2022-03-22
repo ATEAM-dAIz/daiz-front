@@ -42,11 +42,12 @@ const Writing = ({ history }) => {
       {modal && <div className={styles.dimmer}></div>}
       <div className={styles.container}>
         <h1>오늘 하루를 기록해보세요.</h1>
-        <form onSubmit={(e) => e.preventDefault()} id="writingForm">
+        <form onSubmit={(e) => e.preventDefault()} className={styles}>
           <input
             name="title"
             type="text"
             placeholder="제목"
+            required
             className="input-writing--title"
             onChange={changeInput}
           />

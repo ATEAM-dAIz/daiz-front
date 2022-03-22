@@ -10,18 +10,11 @@ import { useSelector } from "react-redux";
 import { getDiaryDetail } from "../../services/DiaryService";
 
 const Result = ({ location }) => {
-  let diary_id = "";
-  if (location.id) {
-    localStorage.setItem("diary_id", location.id);
-    diary_id = location.id;
-  } else {
-    diary_id = localStorage.getItem("diary_id");
-  }
-
   const [loading, setLoading] = useState(false);
   const [wait, setWait] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [day, setDay] = useState("");
   const [swipeUp, getSwipeUp] = useState(false);
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
   const username = useSelector((state) => state.userReducer.username);
@@ -30,10 +23,20 @@ const Result = ({ location }) => {
     getSwipeUp(!swipeUp);
   }, [swipeUp]);
 
+  // 성능 개선
+  let diary_id = "";
+  if (location.id) {
+    localStorage.setItem("diary_id", location.id);
+    diary_id = location.id;
+  } else {
+    diary_id = localStorage.getItem("diary_id");
+  }
+
   useEffect(() => {
     const get = async () => {
       setLoading(true);
       await getDiaryDetail(refresh_token, diary_id).then((response) => {
+        setDay(response["updated_at"].split("T")[0]);
         setTitle(response["title"]);
         setContent(response["content"]);
       });
@@ -41,6 +44,13 @@ const Result = ({ location }) => {
     };
     get();
   }, [refresh_token, diary_id]);
+
+  //성능 개선
+  const getDate = (day) => {
+    console.log("getDAte");
+    const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    return week[new Date(day).getDay()];
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -56,8 +66,8 @@ const Result = ({ location }) => {
     <div className={styles.container}>
       {!loading && (
         <div>
-          <p className={styles.day}>SUN</p>
-          <p className={styles.date}>2021.11.07</p>
+          <p className={styles.day}>{getDate(day)}</p>
+          <p className={styles.date}>{day}</p>
           <hr />
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.content}>{content}</p>
