@@ -1,3 +1,5 @@
+@import "../../styles/utils.scss";
+
 .container {
   height: 100%;
   display: flex;
@@ -20,4 +22,16 @@
 
 .confirmBtn {
   margin-top: 32px;
+}
+
+@include tablet {
+  .logo {
+    width: 550px;
+  }
+}
+
+@include desktop {
+  .logo {
+    width: 550px;
+  }
 }

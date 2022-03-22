@@ -31,13 +31,17 @@
 .link {
   color: #494949;
   text-align: center;
+  cursor: pointer;
 }
 
 @include tablet {
   .logo {
     width: 550px;
   }
-  .input-account {
-    height: 68px;
+}
+
+@include desktop {
+  .logo {
+    width: 600px;
   }
 }

@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import { getDiaryDetail } from "../../services/DiaryService";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
+import NavBar from "../../components/NavBar";
 
 const Result = ({ location }) => {
   const [loading, setLoading] = useState(false);
@@ -18,10 +20,16 @@ const Result = ({ location }) => {
   const [swipeUp, getSwipeUp] = useState(false);
   const refresh_token = useSelector((state) => state.userReducer.refresh_token);
   const username = useSelector((state) => state.userReducer.username);
+  const [showNavBar, setShowNavBar] = useState(false);
+  const { width } = useWindowDimensions();
 
   const onClick = useCallback(() => {
     getSwipeUp(!swipeUp);
   }, [swipeUp]);
+
+  useEffect(() => {
+    width > 1024 ? setShowNavBar(true) : setShowNavBar(false);
+  }, [width]);
 
   // 성능 개선
   let diary_id = "";
@@ -63,43 +71,47 @@ const Result = ({ location }) => {
   }, [wait]);
 
   return (
-    <div className={styles.container}>
-      {!loading && (
-        <div>
-          <p className={styles.day}>{getDate(day)}</p>
-          <p className={styles.date}>{day}</p>
-          <hr />
-          <h1 className={styles.title}>{title}</h1>
-          <p className={styles.content}>{content}</p>
-          {wait && (
-            <div
-              className={swipeUp ? styles.extended : styles.commentContainer}
-            >
-              <FontAwesomeIcon
-                icon={swipeUp ? faChevronDown : faChevronUp}
-                className={styles.chevronUp}
-                onClick={onClick}
-              />
-              <h1 className={styles.commentTitle}>오늘의 코멘트</h1>
-              <p className={styles.commentContent}>
-                {username}님
-                <br />
-                {/* 아침에 작성할 경우: 오늘 하루도 화이팅! */}
-                오늘 하루도 수고하셨어요! <br />
-                현재 {username}님은 [가족관계] 상황에 놓여져있고, [분노]를
-                느끼시고 있네요.
-                <br />
-                <br />
-                화가 폭발할 것 같을 때는 그 자리를 피하는 것도 좋은 방법이라고
-                생각해요
-              </p>
-            </div>
-          )}
-        </div>
-      )}
-      {loading && <div className={styles.loading}></div>}
-      <TabBar />
-    </div>
+    <>
+      {showNavBar && <NavBar />}
+
+      <div className={styles.container}>
+        {!loading && (
+          <div className={styles.wrapper}>
+            <p className={styles.day}>{getDate(day)}</p>
+            <p className={styles.date}>{day}</p>
+            <hr />
+            <h1 className={styles.title}>{title}</h1>
+            <p className={styles.content}>{content}</p>
+            {wait && (
+              <div
+                className={swipeUp ? styles.extended : styles.commentContainer}
+              >
+                <FontAwesomeIcon
+                  icon={swipeUp ? faChevronDown : faChevronUp}
+                  className={styles.chevronUp}
+                  onClick={onClick}
+                />
+                <h1 className={styles.commentTitle}>오늘의 코멘트</h1>
+                <p className={styles.commentContent}>
+                  {username}님
+                  <br />
+                  {/* 아침에 작성할 경우: 오늘 하루도 화이팅! */}
+                  오늘 하루도 수고하셨어요! <br />
+                  현재 {username}님은 [가족관계] 상황에 놓여져있고, [분노]를
+                  느끼시고 있네요.
+                  <br />
+                  <br />
+                  화가 폭발할 것 같을 때는 그 자리를 피하는 것도 좋은 방법이라고
+                  생각해요
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+        {loading && <div className={styles.loading}></div>}
+        {!showNavBar && <TabBar />}
+      </div>
+    </>
   );
 };
 

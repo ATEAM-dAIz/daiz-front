@@ -5,9 +5,17 @@ import TabBar from "../../components/TabBar";
 import { postDiary } from "../../services/DiaryService";
 import { useDispatch, useSelector } from "react-redux";
 import { clickWriting } from "../../store/modules/tab_bar";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
+import NavBar from "../../components/NavBar";
 
 const Writing = ({ history }) => {
   const dispatch = useDispatch();
+  const [showNavBar, setShowNavBar] = useState(false);
+  const { width } = useWindowDimensions();
+
+  useEffect(() => {
+    width > 1024 ? setShowNavBar(true) : setShowNavBar(false);
+  }, [width]);
 
   useEffect(() => dispatch(clickWriting("true")), [dispatch]);
 
@@ -39,6 +47,7 @@ const Writing = ({ history }) => {
 
   return (
     <>
+      {showNavBar && <NavBar />}
       {modal && <div className={styles.dimmer}></div>}
       <div className={styles.container}>
         <h1>오늘 하루를 기록해보세요.</h1>
@@ -95,7 +104,7 @@ const Writing = ({ history }) => {
         </form>
       </div>
 
-      <TabBar />
+      {!showNavBar && <TabBar />}
     </>
   );
 };

@@ -1,0 +1,44 @@
+@import "../styles/utils.scss";
+
+.container {
+  position: relative;
+  padding-right: 16px;
+}
+
+.menu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #ffffff;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  z-index: 1;
+}
+
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  display: block;
+  padding: 15px 20px;
+  border-bottom: 1px solid #dddddd;
+  text-decoration: none;
+  color: #333333;
+}
+
+.menu li:hover {
+  background-color: $highlight-color;
+}

@@ -3,7 +3,7 @@
 .container {
   position: relative;
   height: 100%;
-  margin-top: 4px;
+  padding-top: 55px;
 
   * {
     font-weight: normal;
@@ -125,6 +125,36 @@
   .btnContainer {
     * {
       width: 120px;
+    }
+  }
+}
+
+@include desktop {
+  .modal {
+    width: 50%;
+    p {
+      font-size: 18px;
+    }
+  }
+  .container {
+    h1 {
+      margin: 40px 0 24px 0;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    button {
+      margin-top: 64px;
+    }
+  }
+  .wrapper {
+    height: 600px;
+  }
+  .btnContainer {
+    * {
+      width: 120px;
+      height: 40px;
+      font-size: 14px;
     }
   }
 }

@@ -28,6 +28,7 @@ $desktop: 1025px;
   outline: none;
   font-size: $font-size;
   color: #ffffff;
+  cursor: pointer;
 }
 
 @mixin small_device {
@@ -79,7 +80,7 @@ $desktop: 1025px;
 
 @include tablet {
   .input-account {
-    @include input(70%, 68px, 30px, 18px);
+    @include input(70%, 64px, 30px, 18px);
   }
   .input-writing--title {
     @include input(80%, 50px, 10px, 18px);
@@ -89,6 +90,24 @@ $desktop: 1025px;
   }
   .btn-main {
     @include btn(70%, 60px, 18px);
+  }
+  .btn-writing {
+    @include btn(50%, 60px, 18px);
+  }
+}
+
+@include desktop {
+  .input-account {
+    @include input(50%, 64px, 30px, 18px);
+  }
+  .input-writing--title {
+    @include input(80%, 50px, 10px, 18px);
+  }
+  .input-writing {
+    @include input(90%, 100%, 10px, 18px);
+  }
+  .btn-main {
+    @include btn(50%, 54px, 18px);
   }
   .btn-writing {
     @include btn(50%, 60px, 18px);

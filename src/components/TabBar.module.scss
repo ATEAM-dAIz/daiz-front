@@ -16,3 +16,9 @@
 .selectedBtn {
   color: $main-color;
 }
+
+@include desktop {
+  .icons {
+    display: none;
+  }
+}

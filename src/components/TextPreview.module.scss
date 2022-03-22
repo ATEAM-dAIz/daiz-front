@@ -1,11 +1,13 @@
+@import "../styles/utils.scss";
+
 .container {
   display: flex;
-  width: 80%;
+  width: 60%;
   margin: 16px 0;
+  cursor: pointer;
 }
 
 .wrapper {
-  left: 72px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,4 +29,18 @@
   margin-top: 0;
   margin-bottom: 0;
   font-size: 24px;
+}
+
+@include desktop {
+  .container {
+    margin: 8px 0;
+  }
+  .container:hover {
+    opacity: 0.7;
+  }
+  .wrapper {
+    height: 120px;
+    border: 1px solid $lightgray-color;
+    border-radius: 0;
+  }
 }
