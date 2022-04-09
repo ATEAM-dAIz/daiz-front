@@ -2,7 +2,6 @@
 
 .container {
   height: 100%;
-  padding-top: 55px;
 
   h1 {
     margin: 16px 0 8px 0;
@@ -35,6 +34,7 @@
 @include desktop {
   .container {
     height: 100vh;
+    padding-top: 55px;
   }
   .mySwiper {
     align-items: center;

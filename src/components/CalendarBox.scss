@@ -2,7 +2,6 @@
 
 .react-calendar {
   width: 100%;
-  padding-top: 55px;
   background: $background-color;
   line-height: 1.125em;
   z-index: -1;
@@ -95,6 +94,7 @@
 
 @include desktop {
   .react-calendar {
+    padding-top: 55px;
     height: 100%;
     margin-top: 8px;
   }

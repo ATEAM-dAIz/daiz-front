@@ -3,7 +3,6 @@
 .container {
   position: relative;
   height: 100%;
-  padding-top: 55px;
 
   * {
     font-weight: normal;
@@ -36,9 +35,9 @@
     font-size: 18px;
   }
 
-  button {
-    margin-top: 24px;
-  }
+  // button {
+  //   margin-top: 24px;
+  // }
 }
 
 .wrapper {
@@ -137,6 +136,7 @@
     }
   }
   .container {
+    padding-top: 55px;
     h1 {
       margin: 40px 0 24px 0;
     }
