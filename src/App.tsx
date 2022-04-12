@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import "./App.scss";
 
@@ -13,8 +13,8 @@ const Writing = lazy(() => import("./pages/Writing/Writing"));
 const Analysis = lazy(() => import("./pages/Analysis/Analysis"));
 const Result = lazy(() => import("./pages/Result/Result"));
 const Mypage = lazy(() => import("./pages/Mypage/Mypage"));
-const ResetPwConfirm = lazy(() =>
-  import("./pages/ResetPwConfirm/ResetPwConfirm")
+const ResetPwConfirm = lazy(
+  () => import("./pages/ResetPwConfirm/ResetPwConfirm")
 );
 const ResetPw = lazy(() => import("./pages/ResetPw/ResetPw"));
 const ChangePw = lazy(() => import("./pages/ChangePw/ChangePw"));
@@ -22,7 +22,7 @@ const ChangePw = lazy(() => import("./pages/ChangePw/ChangePw"));
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         <Suspense fallback={<p>로딩중...</p>}>
           <PublicRoute restricted={true} exact path="/" component={Login} />
           <PublicRoute restricted={true} path="/signup" component={Signup} />
@@ -36,7 +36,7 @@ function App() {
           <PrivateRoute path="/mypage" component={Mypage} />
           <PrivateRoute path="/change_password" component={ChangePw} />
         </Suspense>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
