@@ -10,12 +10,17 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const TabBar = () => {
   const history = useHistory();
-  const mainBtn = useSelector((state) => state.tabBarReducer.main);
-  const writingBtn = useSelector((state) => state.tabBarReducer.writing);
-  const mypageBtn = useSelector((state) => state.tabBarReducer.mypage);
+  const mainBtn = useSelector((state: RootState) => state.tabBarReducer.main);
+  const writingBtn = useSelector(
+    (state: RootState) => state.tabBarReducer.writing
+  );
+  const mypageBtn = useSelector(
+    (state: RootState) => state.tabBarReducer.mypage
+  );
 
   return (
     <div className={styles.icons}>

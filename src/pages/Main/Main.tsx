@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, lazy, Suspense } from "react";
+import { useCallback, useEffect, useState, lazy, Suspense } from "react";
 import styles from "./Main.module.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,7 +27,10 @@ const Main = () => {
     width > 1024 ? setShowNavBar(true) : setShowNavBar(false);
   }, [width]);
 
-  useEffect(() => dispatch(clickMain("true")), [dispatch]);
+  useEffect(() => {
+    dispatch(clickMain() as any);
+    console.log("main 실행");
+  }, [dispatch]);
 
   return (
     <div className={fullScreen ? styles.dimmer : styles.container}>
@@ -45,7 +48,7 @@ const Main = () => {
           <TextPreview />
         </div>
 
-        {!showNavBar && <TabBar fullScreen={fullScreen} />}
+        {!showNavBar && <TabBar />}
       </Suspense>
     </div>
   );
