@@ -1,9 +1,14 @@
 // 액션 타입
-const LOGIN_USER = "info/LOGIN_USER";
-const LOGOUT_USER = "info/LOGOUT_USER";
+const LOGIN_USER = "info/LOGIN_USER" as const;
+const LOGOUT_USER = "info/LOGOUT_USER" as const;
 
 // 액션 생성 함수
-export const login = (email, refresh_token, username, isLoggedIn) => ({
+export const login = (
+  email: string,
+  refresh_token: string,
+  username: string,
+  isLoggedIn: boolean
+) => ({
   type: LOGIN_USER,
   info: {
     email: email,
@@ -12,7 +17,12 @@ export const login = (email, refresh_token, username, isLoggedIn) => ({
     isLoggedIn: isLoggedIn,
   },
 });
-export const logout = (email, refresh_token, username, isLoggedIn) => ({
+export const logout = (
+  email: string,
+  refresh_token: string,
+  username: string,
+  isLoggedIn: boolean
+) => ({
   type: LOGOUT_USER,
   info: {
     email: email,
@@ -22,6 +32,13 @@ export const logout = (email, refresh_token, username, isLoggedIn) => ({
   },
 });
 
+type InfoState = {
+  email: string;
+  refresh_token: string;
+  username: string;
+  isLoggedIn: boolean;
+};
+
 // 모듈 초기 상태
 const initialState = {
   email: "",
@@ -30,8 +47,13 @@ const initialState = {
   isLoggedIn: false,
 };
 
+type InfoAction = ReturnType<typeof login> | ReturnType<typeof logout>;
+
 // 리듀서
-export default function userReducer(state = initialState, action) {
+export default function userReducer(
+  state: InfoState = initialState,
+  action: InfoAction
+): InfoState {
   switch (action.type) {
     case LOGIN_USER:
       return {
