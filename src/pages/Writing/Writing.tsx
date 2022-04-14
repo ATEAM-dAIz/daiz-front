@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import styles from "./Writing.module.scss";
 import TabBar from "../../components/TabBar";
@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { clickWriting } from "../../store/modules/tab_bar";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
+import { RootState } from "../../store";
 
-const Writing = ({ history }) => {
+const Writing = ({ history }: { history: any }) => {
   const dispatch = useDispatch();
   const [showNavBar, setShowNavBar] = useState(false);
   const { width } = useWindowDimensions();
@@ -17,16 +18,18 @@ const Writing = ({ history }) => {
     width > 1024 ? setShowNavBar(true) : setShowNavBar(false);
   }, [width]);
 
-  useEffect(() => dispatch(clickWriting("true")), [dispatch]);
+  useEffect(() => dispatch(clickWriting() as any), [dispatch]);
 
-  const refresh_token = useSelector((state) => state.userReducer.refresh_token);
+  const refresh_token = useSelector(
+    (state: RootState) => state.userReducer.refresh_token
+  );
 
   const [modal, setModal] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [existingContent, setExistingContent] = useState(false);
 
-  const changeInput = useCallback((e) => {
+  const changeInput = useCallback((e: any) => {
     const {
       target: { name, value },
     } = e;
@@ -51,7 +54,7 @@ const Writing = ({ history }) => {
       {modal && <div className={styles.dimmer}></div>}
       <div className={styles.container}>
         <h1>오늘 하루를 기록해보세요.</h1>
-        <form onSubmit={(e) => e.preventDefault()} className={styles}>
+        <form onSubmit={(e) => e.preventDefault()}>
           <input
             name="title"
             type="text"

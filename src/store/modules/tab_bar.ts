@@ -4,27 +4,14 @@ const CLICK_WRITING = "tab_bar/CLICK_WRITING" as const;
 const CLICK_MYPAGE = "tab_bar/CLICK_MYPAGE" as const;
 
 // 액션 생성 함수
-export const clickMain = (main: string, writing: string, mypage: string) => ({
+export const clickMain = () => ({
   type: CLICK_MAIN,
-  main: main,
-  writing: writing,
-  mypage: mypage,
 });
-export const clickWriting = (
-  main: string,
-  writing: string,
-  mypage: string
-) => ({
+export const clickWriting = () => ({
   type: CLICK_WRITING,
-  main: main,
-  writing: writing,
-  mypage: mypage,
 });
-export const clickMypage = (main: string, writing: string, mypage: string) => ({
+export const clickMypage = () => ({
   type: CLICK_MYPAGE,
-  main: main,
-  writing: writing,
-  mypage: mypage,
 });
 
 type TabBarState = {
@@ -53,21 +40,21 @@ export default function tabBarReducer(
   switch (action.type) {
     case CLICK_MAIN:
       return {
-        main: action.main,
-        writing: action.writing,
-        mypage: action.mypage,
+        main: "true",
+        writing: "false",
+        mypage: "false",
       };
     case CLICK_WRITING:
       return {
-        main: action.main,
-        writing: action.writing,
-        mypage: action.mypage,
+        main: "false",
+        writing: "true",
+        mypage: "false",
       };
     case CLICK_MYPAGE:
       return {
-        main: action.main,
-        writing: action.writing,
-        mypage: action.mypage,
+        main: "false",
+        writing: "false",
+        mypage: "true",
       };
 
     default:
