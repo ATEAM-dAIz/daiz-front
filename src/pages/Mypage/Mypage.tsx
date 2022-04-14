@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import TextPreview from "../../components/TextPreview";
 import TabBar from "../../components/TabBar";
@@ -22,7 +22,7 @@ const Mypage = () => {
     width > 1024 ? setShowNavBar(true) : setShowNavBar(false);
   }, [width]);
 
-  useEffect(() => dispatch(clickMypage("true")), [dispatch]);
+  useEffect(() => dispatch(clickMypage() as any), [dispatch]);
 
   return (
     <>

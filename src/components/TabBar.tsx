@@ -14,12 +14,14 @@ import { RootState } from "../store";
 
 const TabBar = () => {
   const history = useHistory();
-  const mainBtn = useSelector((state: RootState) => state.tabBarReducer.main);
-  const writingBtn = useSelector(
-    (state: RootState) => state.tabBarReducer.writing
+  const mainBtn = JSON.parse(
+    useSelector((state: RootState) => state.tabBarReducer.main)
   );
-  const mypageBtn = useSelector(
-    (state: RootState) => state.tabBarReducer.mypage
+  const writingBtn = JSON.parse(
+    useSelector((state: RootState) => state.tabBarReducer.writing)
+  );
+  const mypageBtn = JSON.parse(
+    useSelector((state: RootState) => state.tabBarReducer.mypage)
   );
 
   return (
@@ -27,17 +29,17 @@ const TabBar = () => {
       <FontAwesomeIcon
         icon={faHome}
         onClick={() => history.push("/main")}
-        className={mainBtn && styles.selectedBtn}
+        className={mainBtn ? styles.selectedBtn : ""}
       />
       <FontAwesomeIcon
         icon={faPlusCircle}
         onClick={() => history.push("/write")}
-        className={writingBtn && styles.selectedBtn}
+        className={writingBtn ? styles.selectedBtn : ""}
       />
       <FontAwesomeIcon
         icon={faUser}
         onClick={() => history.push("/mypage")}
-        className={mypageBtn && styles.selectedBtn}
+        className={mypageBtn ? styles.selectedBtn : ""}
       />
     </div>
   );

@@ -27,10 +27,7 @@ const Main = () => {
     width > 1024 ? setShowNavBar(true) : setShowNavBar(false);
   }, [width]);
 
-  useEffect(() => {
-    dispatch(clickMain() as any);
-    console.log("main 실행");
-  }, [dispatch]);
+  useEffect(() => dispatch(clickMain() as any), [dispatch]);
 
   return (
     <div className={fullScreen ? styles.dimmer : styles.container}>

@@ -17,19 +17,8 @@ export const login = (
     isLoggedIn: isLoggedIn,
   },
 });
-export const logout = (
-  email: string,
-  refresh_token: string,
-  username: string,
-  isLoggedIn: boolean
-) => ({
+export const logout = () => ({
   type: LOGOUT_USER,
-  info: {
-    email: email,
-    refresh_token: refresh_token,
-    username: username,
-    isLoggedIn: isLoggedIn,
-  },
 });
 
 type InfoState = {

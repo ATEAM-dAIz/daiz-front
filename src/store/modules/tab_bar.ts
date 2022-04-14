@@ -37,7 +37,6 @@ export default function tabBarReducer(
   state: TabBarState = initialState,
   action: TabBarAction
 ): TabBarState {
-  console.log(state);
   switch (action.type) {
     case CLICK_MAIN:
       return {
