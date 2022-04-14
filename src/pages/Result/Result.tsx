@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import styles from "./Result.module.scss";
 import TabBar from "../../components/TabBar";
@@ -10,16 +10,21 @@ import { useSelector } from "react-redux";
 import { getDiaryDetail } from "../../services/DiaryService";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
+import { RootState } from "../../store";
 
-const Result = ({ location }) => {
+const Result = ({ location }: { location: any }) => {
   const [loading, setLoading] = useState(false);
   const [wait, setWait] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [day, setDay] = useState("");
   const [swipeUp, getSwipeUp] = useState(false);
-  const refresh_token = useSelector((state) => state.userReducer.refresh_token);
-  const username = useSelector((state) => state.userReducer.username);
+  const refresh_token = useSelector(
+    (state: RootState) => state.userReducer.refresh_token
+  );
+  const username = useSelector(
+    (state: RootState) => state.userReducer.username
+  );
   const [showNavBar, setShowNavBar] = useState(false);
   const { width } = useWindowDimensions();
 
@@ -37,7 +42,7 @@ const Result = ({ location }) => {
     localStorage.setItem("diary_id", location.id);
     diary_id = location.id;
   } else {
-    diary_id = localStorage.getItem("diary_id");
+    diary_id = localStorage.getItem("diary_id") ?? "";
   }
 
   useEffect(() => {
@@ -54,7 +59,7 @@ const Result = ({ location }) => {
   }, [refresh_token, diary_id]);
 
   //성능 개선
-  const getDate = (day) => {
+  const getDate = (day: any) => {
     console.log("getDAte");
     const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     return week[new Date(day).getDay()];

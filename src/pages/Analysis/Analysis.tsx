@@ -1,11 +1,13 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import TabBar from "../../components/TabBar";
+import { RootState } from "../../store";
 
 import styles from "./Analysis.module.scss";
 
-const Analysis = ({ history }) => {
-  const username = useSelector((state) => state.userReducer.username);
+const Analysis = ({ history }: { history: any }) => {
+  const username = useSelector(
+    (state: RootState) => state.userReducer.username
+  );
 
   return (
     <div className={styles.container}>
