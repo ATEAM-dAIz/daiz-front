@@ -1,4 +1,3 @@
-import React from "react";
 import { useHistory } from "react-router-dom";
 import DropDownMenu from "./DropDownMenu";
 import styles from "./NavBar.module.scss";
