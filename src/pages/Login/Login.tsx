@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { useDispatch } from "react-redux";
 
@@ -7,13 +7,13 @@ import { requestLogin } from "../../services/AuthService";
 import { login } from "../../store/modules/info";
 import styles from "./Login.module.scss";
 
-const Login = ({ history }) => {
+const Login = ({ history }: { history: any }) => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
 
   const dispatch = useDispatch();
 
-  const changeInput = (e) => {
+  const changeInput = (e: any) => {
     const {
       target: { name, value },
     } = e;
@@ -29,7 +29,7 @@ const Login = ({ history }) => {
     }
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: any) => {
     e.preventDefault();
     if (!email.includes("@")) {
       alert("이메일 형식을 입력하세요.");
