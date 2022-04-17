@@ -1,7 +1,12 @@
 import axios from "axios";
 import { serverURL } from "./ServerConst";
 
-export const requestSignup = async (email, name, pw, rePw) => {
+export const requestSignup = async (
+  email: string,
+  name: string,
+  pw: string,
+  rePw: string
+) => {
   return await axios
     .post(`${serverURL}/signup/`, {
       email: email,
@@ -15,8 +20,8 @@ export const requestSignup = async (email, name, pw, rePw) => {
     });
 };
 
-export const requestLogin = async (email, pw) => {
-  return await axios
+export const requestLogin = async (email: string, pw: string) => {
+  return axios
     .post(
       `${serverURL}/login/`,
       {
@@ -38,8 +43,8 @@ export const requestLogin = async (email, pw) => {
     });
 };
 
-export const requestAccessToken = async (refresh_token) => {
-  return await axios
+export const requestAccessToken = async (refresh_token: string) => {
+  return axios
     .post(`${serverURL}/token/refresh/`, {
       refresh: refresh_token,
     })
@@ -51,9 +56,9 @@ export const requestAccessToken = async (refresh_token) => {
     });
 };
 
-export const checkAccessToken = async (refresh_token) => {
+export const checkAccessToken = async (refresh_token: string) => {
   if (axios.defaults.headers.common["Authorization"] === undefined) {
-    return await requestAccessToken(refresh_token).then((response) => {
+    return requestAccessToken(refresh_token).then((response) => {
       return response;
     });
   } else {
@@ -61,9 +66,9 @@ export const checkAccessToken = async (refresh_token) => {
   }
 };
 
-export const resetPassword = async (email) => {
+export const resetPassword = async (email: string) => {
   const body = JSON.stringify({ email });
-  return await axios
+  return axios
     .post(`${serverURL}/password/reset/`, body, {
       headers: {
         "Content-Type": "application/json",
@@ -78,14 +83,19 @@ export const resetPassword = async (email) => {
     });
 };
 
-export const resetPasswordConfirm = async (newPw, reNewPw, uid, token) => {
+export const resetPasswordConfirm = async (
+  newPw: string,
+  reNewPw: string,
+  uid: any,
+  token: any
+) => {
   const body = JSON.stringify({
     new_password1: newPw,
     new_password2: reNewPw,
     uid,
     token,
   });
-  return await axios
+  return axios
     .post(`${serverURL}/password/reset/confirm/`, body, {
       headers: {
         "Content-Type": "application/json",
@@ -100,20 +110,22 @@ export const resetPasswordConfirm = async (newPw, reNewPw, uid, token) => {
     });
 };
 
-export const changePassword = async (newPw, reNewPw, refresh_token) => {
+export const changePassword = async (
+  newPw: string,
+  reNewPw: string,
+  refresh_token: string
+) => {
   if (newPw !== reNewPw) alert("비밀번호가 일치하지 않습니다.");
   else {
-    const access_token = await checkAccessToken(refresh_token).then(
-      (response) => {
-        return response;
-      }
-    );
+    const access_token = checkAccessToken(refresh_token).then((response) => {
+      return response;
+    });
     const body = {
       new_password1: newPw,
       new_password2: reNewPw,
     };
 
-    return await axios
+    return axios
       .post(`${serverURL}/password/change/`, body, {
         headers: {
           "Content-Type": "application/json",
