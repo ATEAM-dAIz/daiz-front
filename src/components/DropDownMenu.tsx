@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useAppDispatch } from "../store";
 import { logout } from "../store/modules/info";
 import styles from "./DropDownMenu.module.scss";
 
 const DropDownMenu = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);

@@ -3,17 +3,17 @@ import styles from "./Main.module.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExpandAlt, faCompressAlt } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
 import { clickMain } from "../../store/modules/tab_bar";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
+import { useAppDispatch } from "../../store";
 
 const CalendarBox = lazy(() => import("../../components/CalendarBox"));
 const TextPreview = lazy(() => import("../../components/TextPreview"));
 const TabBar = lazy(() => import("../../components/TabBar"));
 
 const Main = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [fullScreen, setFullScreen] = useState(false);
   const [showNavBar, setShowNavBar] = useState(false);
 

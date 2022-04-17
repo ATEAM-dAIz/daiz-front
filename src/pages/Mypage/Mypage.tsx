@@ -2,18 +2,16 @@ import { useEffect, useState } from "react";
 
 import TextPreview from "../../components/TextPreview";
 import TabBar from "../../components/TabBar";
-
 import styles from "./Mypage.module.scss";
-
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../store/modules/info";
 import { clickMypage } from "../../store/modules/tab_bar";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
+import { useAppDispatch } from "../../store";
 
 const Mypage = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
   const [showNavBar, setShowNavBar] = useState(false);
   const { width } = useWindowDimensions();

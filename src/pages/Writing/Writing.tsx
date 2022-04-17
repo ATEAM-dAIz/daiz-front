@@ -3,14 +3,14 @@ import { useCallback, useEffect, useState } from "react";
 import styles from "./Writing.module.scss";
 import TabBar from "../../components/TabBar";
 import { postDiary } from "../../services/DiaryService";
-import { useDispatch, useSelector } from "react-redux";
 import { clickWriting } from "../../store/modules/tab_bar";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
-import { RootState } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { RouteComponentProps } from "react-router";
 
-const Writing = ({ history }: { history: any }) => {
-  const dispatch = useDispatch();
+const Writing: React.FC<RouteComponentProps> = ({ history }) => {
+  const dispatch = useAppDispatch();
   const [showNavBar, setShowNavBar] = useState(false);
   const { width } = useWindowDimensions();
 
@@ -20,8 +20,8 @@ const Writing = ({ history }: { history: any }) => {
 
   useEffect(() => dispatch(clickWriting() as any), [dispatch]);
 
-  const refresh_token = useSelector(
-    (state: RootState) => state.userReducer.refresh_token
+  const refresh_token = useAppSelector(
+    (state) => state.userReducer.refresh_token
   );
 
   const [modal, setModal] = useState(false);
@@ -29,24 +29,29 @@ const Writing = ({ history }: { history: any }) => {
   const [content, setContent] = useState("");
   const [existingContent, setExistingContent] = useState(false);
 
-  const changeInput = useCallback((e: any) => {
-    const {
-      target: { name, value },
-    } = e;
-    switch (name) {
-      case "title":
-        setTitle(value);
-        break;
-      case "content":
-        value.length === 0
-          ? setExistingContent(false)
-          : setExistingContent(true);
-        setContent(value);
-        break;
+  const onChangeInput = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const {
+        target: { name, value },
+      } = e;
+      switch (name) {
+        case "title":
+          setTitle(value);
+          break;
+        case "content":
+          value.length === 0
+            ? setExistingContent(false)
+            : setExistingContent(true);
+          setContent(value);
+          break;
 
-      default:
-    }
-  }, []);
+        default:
+      }
+    },
+    []
+  );
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => e.preventDefault();
 
   return (
     <>
@@ -54,14 +59,14 @@ const Writing = ({ history }: { history: any }) => {
       {modal && <div className={styles.dimmer}></div>}
       <div className={styles.container}>
         <h1>오늘 하루를 기록해보세요.</h1>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={onSubmit}>
           <input
             name="title"
             type="text"
             placeholder="제목"
             required
             className="input-writing--title"
-            onChange={changeInput}
+            onChange={onChangeInput}
           />
           <hr />
           <div className={styles.wrapper}>
@@ -72,7 +77,7 @@ const Writing = ({ history }: { history: any }) => {
               placeholder="내용"
               required
               className="input-writing"
-              onChange={changeInput}
+              onChange={onChangeInput}
             />
           </div>
           <button

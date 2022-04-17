@@ -1,37 +1,41 @@
-import React, { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import { RouteComponentProps } from "react-router";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { requestSignup } from "../../services/AuthService";
 import styles from "./Signup.module.scss";
 
-const Signup = ({ history }) => {
+const Signup: React.FC<RouteComponentProps> = ({ history }) => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const [rePw, setRePw] = useState("");
   const [name, setName] = useState("");
 
-  const changeInput = useCallback((e) => {
-    const {
-      target: { name, value },
-    } = e;
-    switch (name) {
-      case "email":
-        setEmail(value);
-        break;
-      case "password":
-        setPw(value);
-        break;
-      case "reEnterPassword":
-        setRePw(value);
-        break;
-      case "name":
-        setName(value);
-        break;
-      default:
-    }
-  }, []);
+  const onChangeInput = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const {
+        target: { name, value },
+      } = e;
+      switch (name) {
+        case "email":
+          setEmail(value);
+          break;
+        case "password":
+          setPw(value);
+          break;
+        case "reEnterPassword":
+          setRePw(value);
+          break;
+        case "name":
+          setName(value);
+          break;
+        default:
+      }
+    },
+    []
+  );
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!email.includes("@")) alert("이메일 형식을 입력하세요.");
@@ -58,7 +62,7 @@ const Signup = ({ history }) => {
           autoComplete="new-email"
           placeholder="이메일"
           className="input-account"
-          onChange={changeInput}
+          onChange={onChangeInput}
           required
         />
         <input
@@ -68,7 +72,7 @@ const Signup = ({ history }) => {
           autoComplete="new-password"
           placeholder="비밀번호"
           className="input-account"
-          onChange={changeInput}
+          onChange={onChangeInput}
           required
         />
         <input
@@ -78,7 +82,7 @@ const Signup = ({ history }) => {
           autoComplete="new-password"
           placeholder="비밀번호 확인"
           className="input-account"
-          onChange={changeInput}
+          onChange={onChangeInput}
           required
         />
         <input
@@ -88,7 +92,7 @@ const Signup = ({ history }) => {
           autoComplete="new-name"
           placeholder="닉네임"
           className="input-account"
-          onChange={changeInput}
+          onChange={onChangeInput}
           required
         />
         <button className={`btn-main ${styles.btn}`}>회원가입</button>

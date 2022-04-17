@@ -4,25 +4,32 @@ import styles from "./TextPreview.module.scss";
 import { useHistory } from "react-router-dom";
 
 import { getDiary } from "../services/DiaryService";
-import { useDispatch, useSelector } from "react-redux";
 import { insertDate } from "../store/modules/diary";
-import { RootState } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 
 const TextPreview = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
   const [diary, setDiary] = useState<any[]>([]);
-  const refresh_token = useSelector(
-    (state: RootState) => state.userReducer.refresh_token
+  const refresh_token = useAppSelector(
+    (state) => state.userReducer.refresh_token
   );
 
   // val type 확실 X
   const onClick = (val: { [key: string]: any }) => {
+    console.log(val);
     history.push({ pathname: "/result", state: { id: val["id"] } });
   };
 
   useEffect(() => {
-    const createCalendar = (response: any) => {
+    const createCalendar = (
+      response: {
+        id: number;
+        title: string;
+        content: string;
+        updated_at: string;
+      }[] = []
+    ) => {
       let dateSet = new Set();
       for (const diary of response) {
         dateSet.add(diary["updated_at"].split(/T.+/)[0]);
