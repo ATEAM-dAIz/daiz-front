@@ -3,15 +3,14 @@ import { useCallback, useEffect, useState } from "react";
 import styles from "./Writing.module.scss";
 import TabBar from "../../components/TabBar";
 import { postDiary } from "../../services/DiaryService";
-import { useDispatch, useSelector } from "react-redux";
 import { clickWriting } from "../../store/modules/tab_bar";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
-import { RootState } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import { RouteComponentProps } from "react-router";
 
 const Writing: React.FC<RouteComponentProps> = ({ history }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [showNavBar, setShowNavBar] = useState(false);
   const { width } = useWindowDimensions();
 
@@ -21,8 +20,8 @@ const Writing: React.FC<RouteComponentProps> = ({ history }) => {
 
   useEffect(() => dispatch(clickWriting() as any), [dispatch]);
 
-  const refresh_token = useSelector(
-    (state: RootState) => state.userReducer.refresh_token
+  const refresh_token = useAppSelector(
+    (state) => state.userReducer.refresh_token
   );
 
   const [modal, setModal] = useState(false);

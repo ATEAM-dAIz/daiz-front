@@ -6,11 +6,10 @@ import TabBar from "../../components/TabBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
 import { getDiaryDetail } from "../../services/DiaryService";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
-import { RootState } from "../../store";
+import { useAppSelector } from "../../store";
 
 const Result = ({ location }: { location: any }) => {
   const [loading, setLoading] = useState(false);
@@ -19,12 +18,10 @@ const Result = ({ location }: { location: any }) => {
   const [content, setContent] = useState("");
   const [day, setDay] = useState("");
   const [swipeUp, getSwipeUp] = useState(false);
-  const refresh_token = useSelector(
-    (state: RootState) => state.userReducer.refresh_token
+  const refresh_token = useAppSelector(
+    (state) => state.userReducer.refresh_token
   );
-  const username = useSelector(
-    (state: RootState) => state.userReducer.username
-  );
+  const username = useAppSelector((state) => state.userReducer.username);
   const [showNavBar, setShowNavBar] = useState(false);
   const { width } = useWindowDimensions();
 

@@ -1,20 +1,18 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-
 import { changePassword } from "../../services/AuthService";
-import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
 import styles from "./ChangePw.module.scss";
-import { RootState } from "../../store";
+import { useAppSelector } from "../../store";
 
 const ChangePw = () => {
   const history = useHistory();
   const [newPw, setNewPw] = useState("");
   const [reNewPw, setReNewPw] = useState("");
-  const refresh_token = useSelector(
-    (state: RootState) => state.userReducer.refresh_token
+  const refresh_token = useAppSelector(
+    (state) => state.userReducer.refresh_token
   );
   const [showNavBar, setShowNavBar] = useState(false);
   const { width } = useWindowDimensions();

@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
-import { useDispatch } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { requestLogin } from "../../services/AuthService";
+import { useAppDispatch } from "../../store";
 import { login } from "../../store/modules/info";
 import styles from "./Login.module.scss";
 
@@ -10,7 +10,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {

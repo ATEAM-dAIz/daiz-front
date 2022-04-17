@@ -1,13 +1,10 @@
-import { useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import TabBar from "../../components/TabBar";
-import { RootState } from "../../store";
+import { useAppSelector } from "../../store";
 import styles from "./Analysis.module.scss";
 
 const Analysis: React.FC<RouteComponentProps> = ({ history }) => {
-  const username = useSelector(
-    (state: RootState) => state.userReducer.username
-  );
+  const username = useAppSelector((state) => state.userReducer.username);
 
   return (
     <div className={styles.container}>

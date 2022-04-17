@@ -9,19 +9,18 @@ import {
   faPlusCircle,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { useAppSelector } from "../store";
 
 const TabBar = () => {
   const history = useHistory();
   const mainBtn = JSON.parse(
-    useSelector((state: RootState) => state.tabBarReducer.main)
+    useAppSelector((state) => state.tabBarReducer.main)
   );
   const writingBtn = JSON.parse(
-    useSelector((state: RootState) => state.tabBarReducer.writing)
+    useAppSelector((state) => state.tabBarReducer.writing)
   );
   const mypageBtn = JSON.parse(
-    useSelector((state: RootState) => state.tabBarReducer.mypage)
+    useAppSelector((state) => state.tabBarReducer.mypage)
   );
 
   return (
