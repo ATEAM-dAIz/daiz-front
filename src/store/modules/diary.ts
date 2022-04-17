@@ -2,15 +2,15 @@
 const INSERT_DATE = "diary/INSERT_DATE" as const;
 
 // 액션 생성 함수
-export const insertDate = (dateArray: Array<any>) => ({
+export const insertDate = (dateArray: Array<string>) => ({
   type: INSERT_DATE,
   dateArray,
 });
 
-type DiaryState = { date: Array<any> };
+type DiaryState = Array<string>;
 
 // 모듈 초기 상태
-const initialState: DiaryState = { date: [] };
+const initialState: DiaryState = [];
 
 type DiaryAction = ReturnType<typeof insertDate>;
 
@@ -21,9 +21,7 @@ export default function diaryReducer(
 ): DiaryState {
   switch (action.type) {
     case INSERT_DATE:
-      state.date = state.date.concat(action.dateArray);
-      return state;
-
+      return state.concat(action.dateArray);
     default:
       return state;
   }
