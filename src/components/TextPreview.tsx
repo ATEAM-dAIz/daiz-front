@@ -39,7 +39,7 @@ const TextPreview = () => {
 
     const get = async () => {
       const response = await getDiary(refresh_token);
-      const dateArray = createCalendar(response);
+      const dateArray = createCalendar(response) as Array<string>;
       setDiary([...response]);
       dispatch(insertDate(dateArray));
     };
