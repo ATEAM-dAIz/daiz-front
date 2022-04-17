@@ -7,30 +7,31 @@ export const postDiary = async (
   title: string,
   content: string
 ) => {
-  // const access_token = await checkAccessToken(refresh_token);
-  // try {
-  //   axios.post(
-  //     `${serverURL}/diary/`,
-  //     {
-  //       headers: {
-  //         Authorization: `Bearer ${access_token}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //       title: title,
-  //       content: content,
-  //     },
-  //     (axios.defaults.headers.common[
-  //       "Authorization"
-  //     ] = `Bearer ${access_token}`)
-  //   );
-  // } catch (error: any) {
-  //   console.log(error.response);
-  //   alert("예기치 못한 에러가 발생했습니다.");
-  // }
+  const access_token: string = await checkAccessToken(refresh_token);
+  try {
+    axios.post(
+      `${serverURL}/diary/`,
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          "Content-Type": "application/json",
+        },
+        title: title,
+        content: content,
+      },
+
+      (axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${access_token}`) as any
+    );
+  } catch (error: any) {
+    console.log(error.response);
+    alert("예기치 못한 에러가 발생했습니다.");
+  }
 };
 
 export const getDiary = async (refresh_token: string) => {
-  const access_token = await checkAccessToken(refresh_token);
+  const access_token: string = await checkAccessToken(refresh_token);
   return axios
     .get(`${serverURL}/diary/`, {
       headers: {
@@ -47,7 +48,7 @@ export const getDiary = async (refresh_token: string) => {
 };
 
 export const getDiaryDetail = async (refresh_token: string, id: string) => {
-  const access_token = await checkAccessToken(refresh_token);
+  const access_token: string = await checkAccessToken(refresh_token);
   return axios
     .get(`${serverURL}/diary/${id}`, {
       headers: {
