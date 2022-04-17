@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { resetPassword } from "../../services/AuthService";
@@ -9,11 +9,11 @@ const ResetPw = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const onChange = useCallback((e) => {
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   }, []);
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email.includes("@")) {
       alert("이메일 형식을 입력하세요.");

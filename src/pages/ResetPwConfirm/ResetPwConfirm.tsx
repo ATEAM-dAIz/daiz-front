@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { resetPasswordConfirm } from "../../services/AuthService";
@@ -7,11 +7,11 @@ import styles from "./ResetPwConfirm.module.scss";
 
 const ResetPw = () => {
   const history = useHistory();
-  const { uid, token } = useParams();
+  const { uid, token } = useParams<{ uid?: string; token?: string }>();
   const [newPw, setNewPw] = useState("");
   const [reNewPw, setReNewPw] = useState("");
 
-  const onChange = useCallback((e) => {
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { name, value },
     } = e;
@@ -26,7 +26,7 @@ const ResetPw = () => {
     }
   }, []);
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await resetPasswordConfirm(newPw, reNewPw, uid, token).then(() =>
       newPw !== reNewPw
