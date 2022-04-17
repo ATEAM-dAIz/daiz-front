@@ -11,7 +11,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
 import { useAppSelector } from "../../store";
 
-const Result = ({ location }: { location: any }) => {
+const Result = ({ location }: { location: { [key: string]: any } }) => {
   const [loading, setLoading] = useState(false);
   const [wait, setWait] = useState(false);
   const [title, setTitle] = useState("");
