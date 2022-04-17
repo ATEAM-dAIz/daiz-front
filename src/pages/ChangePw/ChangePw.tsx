@@ -23,7 +23,7 @@ const ChangePw = () => {
     width > 1024 ? setShowNavBar(true) : setShowNavBar(false);
   }, [width]);
 
-  const onChange = useCallback((e: any) => {
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { name, value },
     } = e;
@@ -38,7 +38,7 @@ const ChangePw = () => {
     }
   }, []);
 
-  const onSubmit = async (e: any) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await changePassword(newPw, reNewPw, refresh_token).then(() =>
       history.push("/main")

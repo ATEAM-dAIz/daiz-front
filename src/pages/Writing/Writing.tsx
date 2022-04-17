@@ -30,24 +30,29 @@ const Writing: React.FC<RouteComponentProps> = ({ history }) => {
   const [content, setContent] = useState("");
   const [existingContent, setExistingContent] = useState(false);
 
-  const changeInput = useCallback((e: any) => {
-    const {
-      target: { name, value },
-    } = e;
-    switch (name) {
-      case "title":
-        setTitle(value);
-        break;
-      case "content":
-        value.length === 0
-          ? setExistingContent(false)
-          : setExistingContent(true);
-        setContent(value);
-        break;
+  const onChangeInput = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const {
+        target: { name, value },
+      } = e;
+      switch (name) {
+        case "title":
+          setTitle(value);
+          break;
+        case "content":
+          value.length === 0
+            ? setExistingContent(false)
+            : setExistingContent(true);
+          setContent(value);
+          break;
 
-      default:
-    }
-  }, []);
+        default:
+      }
+    },
+    []
+  );
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => e.preventDefault();
 
   return (
     <>
@@ -55,14 +60,14 @@ const Writing: React.FC<RouteComponentProps> = ({ history }) => {
       {modal && <div className={styles.dimmer}></div>}
       <div className={styles.container}>
         <h1>오늘 하루를 기록해보세요.</h1>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={onSubmit}>
           <input
             name="title"
             type="text"
             placeholder="제목"
             required
             className="input-writing--title"
-            onChange={changeInput}
+            onChange={onChangeInput}
           />
           <hr />
           <div className={styles.wrapper}>
@@ -73,7 +78,7 @@ const Writing: React.FC<RouteComponentProps> = ({ history }) => {
               placeholder="내용"
               required
               className="input-writing"
-              onChange={changeInput}
+              onChange={onChangeInput}
             />
           </div>
           <button

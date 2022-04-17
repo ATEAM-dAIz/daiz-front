@@ -12,7 +12,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
 
   const dispatch = useDispatch();
 
-  const changeInput = (e: any) => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { name, value },
     } = e;
@@ -28,7 +28,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
     }
   };
 
-  const onSubmit = async (e: any) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email.includes("@")) {
       alert("이메일 형식을 입력하세요.");
@@ -67,7 +67,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
           type="email"
           autoComplete="current-email"
           placeholder="이메일"
-          onChange={changeInput}
+          onChange={onChangeInput}
           required
           className="input-account"
         />
@@ -76,13 +76,11 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
           type="password"
           autoComplete="current-password"
           placeholder="비밀번호"
-          onChange={changeInput}
+          onChange={onChangeInput}
           required
           className="input-account"
         />
-        <button className={`btn-main ${styles.loginBtn}`} onSubmit={onSubmit}>
-          로그인
-        </button>
+        <button className={`btn-main ${styles.loginBtn}`}>로그인</button>
       </form>
 
       <div className={styles.linkContainer}>
