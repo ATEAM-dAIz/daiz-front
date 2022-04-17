@@ -1,13 +1,12 @@
 import { useMemo, useState } from "react";
-
 import { useDispatch } from "react-redux";
-
+import { RouteComponentProps } from "react-router";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { requestLogin } from "../../services/AuthService";
 import { login } from "../../store/modules/info";
 import styles from "./Login.module.scss";
 
-const Login = ({ history }: { history: any }) => {
+const Login: React.FC<RouteComponentProps> = ({ history }) => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
 
@@ -34,10 +33,11 @@ const Login = ({ history }: { history: any }) => {
     if (!email.includes("@")) {
       alert("이메일 형식을 입력하세요.");
     } else {
-      let result = {};
-      await requestLogin(email, pw).then((response) => {
-        result = response;
-      });
+      let result: {
+        user: { email: string; name: string };
+        refresh_token: string;
+      };
+      result = await requestLogin(email, pw);
 
       dispatch(
         login(

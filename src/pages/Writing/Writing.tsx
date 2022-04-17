@@ -8,8 +8,9 @@ import { clickWriting } from "../../store/modules/tab_bar";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
 import { RootState } from "../../store";
+import { RouteComponentProps } from "react-router";
 
-const Writing = ({ history }: { history: any }) => {
+const Writing: React.FC<RouteComponentProps> = ({ history }) => {
   const dispatch = useDispatch();
   const [showNavBar, setShowNavBar] = useState(false);
   const { width } = useWindowDimensions();
