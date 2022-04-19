@@ -1,15 +1,12 @@
 @import "../../styles/utils.scss";
 
 .container {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-}
-
-.logo {
-  margin-top: 96px;
+  margin-top: 32px;
 }
 
 .column {
@@ -25,13 +22,19 @@
 }
 
 @include tablet {
+  .container {
+    justify-content: space-evenly;
+  }
   .logo {
     width: 550px;
   }
 }
 
 @include desktop {
+  .container {
+    justify-content: space-evenly;
+  }
   .logo {
-    width: 550px;
+    width: 600px;
   }
 }

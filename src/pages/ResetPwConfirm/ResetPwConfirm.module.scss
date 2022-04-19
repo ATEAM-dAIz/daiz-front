@@ -4,14 +4,10 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  margin-top: 32px;
 }
-
-.logo {
-  margin-top: 96px;
-}
-
 .column {
   display: flex;
   flex-direction: column;
@@ -25,11 +21,18 @@
 }
 
 @include tablet {
+  .container {
+    justify-content: space-evenly;
+  }
   .logo {
     width: 550px;
   }
 }
+
 @include desktop {
+  .container {
+    justify-content: space-evenly;
+  }
   .logo {
     width: 600px;
   }

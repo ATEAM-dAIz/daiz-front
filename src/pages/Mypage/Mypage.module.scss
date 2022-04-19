@@ -8,10 +8,11 @@
     font-size: 24px;
     text-align: center;
     font-weight: normal;
+    cursor: default;
   }
 }
 
-.btnLogout {
+.button {
   width: fit-content;
   margin-right: 8px;
   margin-bottom: 8px;
@@ -19,6 +20,7 @@
   color: $lightgray-color;
   text-align: end;
   float: right;
+  cursor: pointer;
 }
 
 .mySwiper {
