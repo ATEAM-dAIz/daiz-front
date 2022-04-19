@@ -22,7 +22,7 @@
   flex-direction: column;
   align-items: flex-end;
   width: 100%;
-  height: 50%;
+  height: calc(100vh - 68px - 330px);
   overflow-y: scroll;
 }
 
@@ -31,27 +31,15 @@
   flex-direction: column;
   align-items: flex-end;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 54px);
   overflow-y: scroll;
-  // animation: slidein 3s linear 1s;
 }
-
-@include tablet {
-  .mySwiper {
-    height: 60%;
-  }
-}
-
 @include desktop {
-  .container {
-    overflow-y: scroll;
-  }
   .fullScreenBtn {
     margin-top: 60px;
   }
   .mySwiper {
-    height: 100%;
-    overflow-y: visible;
+    height: calc(100vh - 330px);
   }
   .mySwiperMoved {
     height: 100%;

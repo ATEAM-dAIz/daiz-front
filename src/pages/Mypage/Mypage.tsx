@@ -29,14 +29,11 @@ const Mypage = () => {
         <h1>일기 목록</h1>
         {!showNavBar && (
           <div>
-            <div
-              className={styles.btnLogout}
-              onClick={() => dispatch(logout())}
-            >
+            <div className={styles.button} onClick={() => dispatch(logout())}>
               로그아웃
             </div>
             <div
-              className={styles.btnLogout}
+              className={styles.button}
               onClick={() => history.push("/change_password")}
             >
               비밀번호 변경
