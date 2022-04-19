@@ -35,9 +35,9 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
 
   // 성능 개선
   let diary_id = "";
-  if (location.id) {
-    localStorage.setItem("diary_id", location.id);
-    diary_id = location.id;
+  if (location.state) {
+    localStorage.setItem("diary_id", location.state);
+    diary_id = location.state;
   } else {
     diary_id = localStorage.getItem("diary_id") ?? "";
   }
@@ -45,11 +45,19 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
   useEffect(() => {
     const get = async () => {
       setLoading(true);
-      await getDiaryDetail(refresh_token, diary_id).then((response) => {
-        setDay(response["updated_at"].split("T")[0]);
-        setTitle(response["title"]);
-        setContent(response["content"]);
-      });
+      getDiaryDetail(refresh_token, diary_id).then(
+        (response: {
+          [key: number]: any;
+          id: number;
+          title: string;
+          content: string;
+          updated_at: string;
+        }) => {
+          setDay(response["updated_at"].split("T")[0]);
+          setTitle(response["title"]);
+          setContent(response["content"]);
+        }
+      );
       setLoading(false);
     };
     get();
@@ -57,7 +65,6 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
 
   //성능 개선
   const getDate = (day: any) => {
-    console.log("getDAte");
     const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     return week[new Date(day).getDay()];
   };
