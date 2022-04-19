@@ -16,9 +16,8 @@ const TextPreview = () => {
   );
 
   // val type 확실 X
-  const onClick = (val: { [key: string]: any }) => {
-    console.log(val);
-    history.push({ pathname: "/result", state: { id: val["id"] } });
+  const onClick = (id: number) => {
+    history.push({ pathname: "/result", state: id });
   };
 
   useEffect(() => {
@@ -49,20 +48,18 @@ const TextPreview = () => {
 
   return diary.length !== 0 ? (
     <>
-      {diary.map((val, idx) => {
-        return (
-          <div
-            className={styles.container}
-            key={idx}
-            onClick={(val) => onClick(val)}
-          >
-            <div className={styles.wrapper}>
-              <p className={styles.date}>{val["updated_at"].split(/T.+/)[0]}</p>
-              <p className={styles.title}>{val["title"]}</p>
-            </div>
+      {diary.map((info, idx) => (
+        <div
+          className={styles.container}
+          key={idx}
+          onClick={() => onClick(info["id"])}
+        >
+          <div className={styles.wrapper}>
+            <p className={styles.date}>{info["updated_at"].split(/T.+/)[0]}</p>
+            <p className={styles.title}>{info["title"]}</p>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </>
   ) : (
     <div></div>
