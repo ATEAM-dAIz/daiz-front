@@ -36,19 +36,19 @@
 ![image](https://user-images.githubusercontent.com/66022264/164190458-947a3d0c-40cd-4176-a695-9c86ce53eb47.png)
 
 ### [메인-모바일 버전/PC 버전]
-- 사용자가 일기를 작성한 날짜가 달력에 표시가 됩니다.
-- 작성한 일기 목록을 슬라이딩하여 확인할 수 있고, 클릭시 작성된 일기가 보입니다.
+- 사용자가 일기를 작성한 날짜가 달력에 표시가 됩니다.
+- 작성한 일기 목록을 슬라이딩하여 확인할 수 있고, 클릭 시 작성된 일기가 보입니다.
 
 ![img](https://user-images.githubusercontent.com/66022264/164190943-406e6de2-6a2d-48b6-8aae-65fd0b3364c3.png)
 ![img](https://user-images.githubusercontent.com/66022264/164190955-57fdab8f-a1c7-493d-9e51-09e6f90786f3.png)
 
-- 달력 없이 일기 목록만 보고 싶다면, 전체보기 버튼을 눌려 한 눈에 더 많은 목록을 볼 수 있습니다.
+- 달력 없이 일기 목록만 보고 싶다면, 전체 보기 버튼을 눌려 한눈에 더 많은 목록을 볼 수 있습니다.
 
 ![img](https://user-images.githubusercontent.com/66022264/164191387-02d9971c-9292-4524-8661-b545d840950b.png)
 
 
 ### [글 작성 페이지]
-- 제목과 내용을 적고 작성완료 버튼을 누릅니다.
+- 제목과 내용을 적고 작성 완료 버튼을 누릅니다.
 - 일기는 AI를 통해 분석되며 수정할 수 없습니다.
 
 ![img](https://user-images.githubusercontent.com/66022264/164193996-7f7a5c81-6b77-4351-9f9e-3ee01021a197.png)
@@ -56,7 +56,7 @@
 ![img](https://user-images.githubusercontent.com/66022264/164194006-02975cbe-0652-42f3-9185-2f8b702f3616.png)
 
 ### [결과창]
--사용자가 일기를 작성한 날짜와 제목, 글이 보여집니다.
+- 사용자가 일기를 작성한 날짜와 제목, 글이 보입니다.
 - AI가 일기를 분석하여 남긴 코멘트를 확인할 수 있습니다.
 
 ![img](https://user-images.githubusercontent.com/66022264/164247276-5486c0f7-67c6-4615-b687-2c7e175964ad.png)
