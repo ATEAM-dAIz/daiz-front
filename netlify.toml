@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/api/*"
-  to = "https://ateam-server.tk/:splat"
+  from = "/api"
+  to = "https://ateam-server.tk"
   status = 200
 
 [[redirects]]
