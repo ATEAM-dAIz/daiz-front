@@ -1,5 +1,4 @@
 import axios from "axios";
-import { serverURL } from "./ServerConst";
 
 export const requestSignup = async (
   email: string,
@@ -8,7 +7,7 @@ export const requestSignup = async (
   rePw: string
 ) => {
   return await axios
-    .post(`${serverURL}/signup/`, {
+    .post(`signup/`, {
       email: email,
       name: name,
       password1: pw,
@@ -23,7 +22,7 @@ export const requestSignup = async (
 export const requestLogin = async (email: string, pw: string) => {
   return axios
     .post(
-      `${serverURL}/login/`,
+      `login/`,
       {
         email: email,
         password: pw,
@@ -45,7 +44,7 @@ export const requestLogin = async (email: string, pw: string) => {
 
 export const requestAccessToken = async (refresh_token: string) => {
   return axios
-    .post(`${serverURL}/token/refresh/`, {
+    .post(`token/refresh/`, {
       refresh: refresh_token,
     })
     .then((response) => {
@@ -69,7 +68,7 @@ export const checkAccessToken = async (refresh_token: string) => {
 export const resetPassword = async (email: string) => {
   const body = JSON.stringify({ email });
   return axios
-    .post(`${serverURL}/password/reset/`, body, {
+    .post(`password/reset/`, body, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -96,7 +95,7 @@ export const resetPasswordConfirm = async (
     token,
   });
   return axios
-    .post(`${serverURL}/password/reset/confirm/`, body, {
+    .post(`password/reset/confirm/`, body, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -126,7 +125,7 @@ export const changePassword = async (
     };
 
     return axios
-      .post(`${serverURL}/password/change/`, body, {
+      .post(`password/change/`, body, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${access_token}`,

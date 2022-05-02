@@ -1,5 +1,4 @@
 import axios from "axios";
-import { serverURL } from "./ServerConst";
 import { checkAccessToken } from "./AuthService";
 
 export const postDiary = async (
@@ -10,7 +9,7 @@ export const postDiary = async (
   const access_token: string = await checkAccessToken(refresh_token);
   try {
     axios.post(
-      `${serverURL}/diary/`,
+      `diary/`,
       {
         headers: {
           Authorization: `Bearer ${access_token}`,
@@ -33,7 +32,7 @@ export const postDiary = async (
 export const getDiary = async (refresh_token: string) => {
   const access_token: string = await checkAccessToken(refresh_token);
   return axios
-    .get(`${serverURL}/diary/`, {
+    .get(`diary/`, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
@@ -50,7 +49,7 @@ export const getDiary = async (refresh_token: string) => {
 export const getDiaryDetail = async (refresh_token: string, id: string) => {
   const access_token: string = await checkAccessToken(refresh_token);
   return axios
-    .get(`${serverURL}/diary/${id}`, {
+    .get(`diary/${id}`, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
