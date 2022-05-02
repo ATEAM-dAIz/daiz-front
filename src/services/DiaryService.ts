@@ -9,7 +9,7 @@ export const postDiary = async (
   const access_token: string = await checkAccessToken(refresh_token);
   try {
     axios.post(
-      `https://ateam-server.tk/diary/`,
+      `/api/diary/`,
       {
         headers: {
           Authorization: `Bearer ${access_token}`,
@@ -32,7 +32,7 @@ export const postDiary = async (
 export const getDiary = async (refresh_token: string) => {
   const access_token: string = await checkAccessToken(refresh_token);
   return axios
-    .get(`https://ateam-server.tk/diary/`, {
+    .get(`/api/diary/`, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
@@ -49,7 +49,7 @@ export const getDiary = async (refresh_token: string) => {
 export const getDiaryDetail = async (refresh_token: string, id: string) => {
   const access_token: string = await checkAccessToken(refresh_token);
   return axios
-    .get(`https://ateam-server.tk/diary/${id}`, {
+    .get(`/api/diary/${id}`, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },

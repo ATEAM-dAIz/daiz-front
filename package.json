@@ -18,6 +18,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.24.0",
     "date-fns": "^2.28.0",
+    "http-proxy-middleware": "^2.0.6",
     "process": "^0.11.10",
     "react": "^17.0.2",
     "react-calendar": "^3.5.0",
@@ -66,6 +67,5 @@
     "@types/react-router": "^5.1.18",
     "cra-bundle-analyzer": "^0.1.1",
     "webpack-bundle-analyzer": "^4.5.0"
-  },
-  "proxy": "https://ateam-server.tk"
+  }
 }
