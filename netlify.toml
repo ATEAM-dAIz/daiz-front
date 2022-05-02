@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/api"
-  to = "https://ateam-server.tk"
+  from = "https://daiz.netlify.app/api/*"
+  to = "https://ateam-server.tk/:splat"
   status = 200
 
 [[redirects]]
