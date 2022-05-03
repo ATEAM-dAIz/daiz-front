@@ -1,3 +1,0 @@
-/api https://ateam-server.tk 301!
-/api/* https://ateam-server.tk/:splat 301!
-/*    /index.html    200

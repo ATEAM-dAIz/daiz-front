@@ -1,4 +1,5 @@
 const { createProxyMiddleware } = require("http-proxy-middleware");
+
 const proxy = {
   target: "https://ateam-server.tk",
   changeOrigin: true,
