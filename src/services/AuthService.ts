@@ -7,7 +7,7 @@ export const requestSignup = async (
   rePw: string
 ) => {
   return await axios
-    .post(`https://ateam-server.tk/signup/`, {
+    .post(`/api/signup/`, {
       email: email,
       name: name,
       password1: pw,
@@ -22,7 +22,7 @@ export const requestSignup = async (
 export const requestLogin = async (email: string, pw: string) => {
   return axios
     .post(
-      `https://ateam-server.tk/login/`,
+      `/api/login/`,
       {
         email: email,
         password: pw,
@@ -44,7 +44,7 @@ export const requestLogin = async (email: string, pw: string) => {
 
 export const requestAccessToken = async (refresh_token: string) => {
   return axios
-    .post(`https://ateam-server.tk/token/refresh/`, {
+    .post(`/api/token/refresh/`, {
       refresh: refresh_token,
     })
     .then((response) => {
@@ -68,7 +68,7 @@ export const checkAccessToken = async (refresh_token: string) => {
 export const resetPassword = async (email: string) => {
   const body = JSON.stringify({ email });
   return axios
-    .post(`https://ateam-server.tk/password/reset/`, body, {
+    .post(`/api/password/reset/`, body, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -95,7 +95,7 @@ export const resetPasswordConfirm = async (
     token,
   });
   return axios
-    .post(`https://ateam-server.tk/password/reset/confirm/`, body, {
+    .post(`/api/password/reset/confirm/`, body, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -125,7 +125,7 @@ export const changePassword = async (
     };
 
     return axios
-      .post(`https://ateam-server.tk/password/change/`, body, {
+      .post(`/api/password/change/`, body, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${access_token}`,
