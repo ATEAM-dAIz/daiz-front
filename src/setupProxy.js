@@ -1,13 +1,16 @@
+const HttpsProxyAgent = require("https-proxy-agent");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
-const proxy = {
-  target: "https://ateam-server.tk",
-  changeOrigin: true,
-  pathRewrite: {
-    "^/api": "", // URL ^/api -> 공백 변경
-  },
-  // secure: false,
+// corporate proxy to connect to
+const proxyServer = "https://ateam-server.tk" || "http://ateam-server.tk";
+
+const options = {
+  target: "https://daiz.netlify.app",
+  agent: new HttpsProxyAgent(proxyServer),
 };
+
+const apiProxy = createProxyMiddleware(options);
+
 module.exports = function (app) {
-  app.use(createProxyMiddleware("/api", proxy));
+  app.use("/api", apiProxy);
 };
