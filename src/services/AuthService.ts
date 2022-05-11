@@ -45,7 +45,7 @@ export const requestLogin = async (email: string, pw: string) => {
 
 export const requestAccessToken = async (refresh_token: string) => {
   return axios
-    .post(`/token/refresh/`, {
+    .post(`/api/token/refresh/`, {
       refresh: refresh_token,
     })
     .then((response) => {
