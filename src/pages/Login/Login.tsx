@@ -61,7 +61,12 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
         ),
         []
       )}
-      <form className={styles.column} onSubmit={onSubmit} noValidate>
+      <form
+        method="GET"
+        className={styles.column}
+        onSubmit={onSubmit}
+        noValidate
+      >
         <input
           name="email"
           type="email"
