@@ -22,7 +22,7 @@ export const requestSignup = async (
 export const requestLogin = async (email: string, pw: string) => {
   return axios
     .post(
-      `/api/login/`,
+      `/api/register/login/`,
       {
         email: email,
         password: pw,

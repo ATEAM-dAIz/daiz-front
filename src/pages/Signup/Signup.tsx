@@ -54,12 +54,7 @@ const Signup: React.FC<RouteComponentProps> = ({ history }) => {
         ),
         []
       )}
-      <form
-        className={styles.column}
-        onSubmit={onSubmit}
-        method="GET"
-        noValidate
-      >
+      <form className={styles.column} onSubmit={onSubmit} noValidate>
         <input
           value={email}
           name="email"
