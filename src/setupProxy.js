@@ -6,7 +6,7 @@ module.exports = function (app) {
       target: process.env.REACT_APP_HTTPS_PROXY,
       changeOrigin: true,
       pathRewrite: {
-        "^/\\api": "", // URL ^/api -> 공백 변경
+        "^/api": "", // URL ^/api -> 공백 변경
       },
       secure: false,
     })
