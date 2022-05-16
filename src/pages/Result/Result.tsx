@@ -84,7 +84,15 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
   }, [refresh_token, diary_id]);
   //성능 개선
   const getDate = (day: any) => {
-    const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    const week = [
+      "일요일",
+      "월요일",
+      "화요일",
+      "수요일",
+      "목요일",
+      "금요일",
+      "토요일",
+    ];
     return week[new Date(day).getDay()];
   };
 
