@@ -17,7 +17,7 @@ const TextPreview = () => {
 
   // val type 확실 X
   const onClick = (id: number) => {
-    history.push({ pathname: "/result", state: id });
+    history.push({ pathname: `/result/${id}`, state: id });
   };
 
   useEffect(() => {

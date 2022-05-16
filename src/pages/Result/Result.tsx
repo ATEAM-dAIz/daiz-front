@@ -34,12 +34,12 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
   }, [width]);
 
   // 성능 개선
-  let diary_id = "";
+  let diary_id = 0;
   if (location.state) {
     localStorage.setItem("diary_id", location.state);
     diary_id = location.state;
   } else {
-    diary_id = localStorage.getItem("diary_id") ?? "";
+    diary_id = Number(localStorage.getItem("diary_id")) ?? 0;
   }
 
   useEffect(() => {
@@ -53,6 +53,7 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
           content: string;
           updated_at: string;
         }) => {
+          console.log(response);
           setDay(response["updated_at"].split("T")[0]);
           setTitle(response["title"]);
           setContent(response["content"]);

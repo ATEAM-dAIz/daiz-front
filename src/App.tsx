@@ -32,7 +32,7 @@ function App() {
           <PrivateRoute path="/main" component={Main} />
           <PrivateRoute path="/write" component={Writing} />
           <PrivateRoute path="/analysis" component={Analysis} />
-          <PrivateRoute path="/result" component={Result} />
+          <PrivateRoute path="/result/:id" component={Result} />
           <PrivateRoute path="/mypage" component={Mypage} />
           <PrivateRoute path="/change_password" component={ChangePw} />
         </Suspense>

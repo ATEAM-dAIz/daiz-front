@@ -46,10 +46,10 @@ export const getDiary = async (refresh_token: string) => {
     });
 };
 
-export const getDiaryDetail = async (refresh_token: string, id: string) => {
+export const getDiaryDetail = async (refresh_token: string, id: number) => {
   const access_token: string = await checkAccessToken(refresh_token);
   return axios
-    .get(`/api/diary/${id}`, {
+    .get(`/api/diary/${id}/`, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
