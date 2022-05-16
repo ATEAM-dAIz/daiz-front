@@ -10,6 +10,7 @@ import { getDiaryDetail } from "../../services/DiaryService";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
 import { useAppSelector } from "../../store";
+import { AIDetail } from "../../services/AIService";
 
 const Result = ({ location }: { location: { [key: string]: any } }) => {
   const [loading, setLoading] = useState(false);
@@ -18,11 +19,16 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
   const [content, setContent] = useState("");
   const [day, setDay] = useState("");
   const [swipeUp, getSwipeUp] = useState(false);
+  const [showNavBar, setShowNavBar] = useState(false);
+  const [commentObj, setCommentObj] = useState({
+    situation: "",
+    emotion: "",
+    comment: "",
+  });
   const refresh_token = useAppSelector(
     (state) => state.userReducer.refresh_token
   );
   const username = useAppSelector((state) => state.userReducer.username);
-  const [showNavBar, setShowNavBar] = useState(false);
   const { width } = useWindowDimensions();
 
   const onClick = useCallback(() => {
@@ -53,7 +59,6 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
           content: string;
           updated_at: string;
         }) => {
-          console.log(response);
           setDay(response["updated_at"].split("T")[0]);
           setTitle(response["title"]);
           setContent(response["content"]);
@@ -64,6 +69,19 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
     get();
   }, [refresh_token, diary_id]);
 
+  useEffect(() => {
+    const get = async () => {
+      AIDetail(refresh_token, diary_id).then((response) => {
+        console.log(response);
+        setCommentObj({
+          situation: response.situation,
+          emotion: response.emotion,
+          comment: response.comment,
+        });
+      });
+    };
+    get();
+  }, [refresh_token, diary_id]);
   //성능 개선
   const getDate = (day: any) => {
     const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -103,16 +121,12 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
                 />
                 <h1 className={styles.commentTitle}>오늘의 코멘트</h1>
                 <p className={styles.commentContent}>
-                  {username}님
-                  <br />
-                  {/* 아침에 작성할 경우: 오늘 하루도 화이팅! */}
-                  오늘 하루도 수고하셨어요! <br />
-                  현재 {username}님은 [가족관계] 상황에 놓여져있고, [분노]를
-                  느끼시고 있네요.
+                  {username}님, 반가워요! <br />
+                  현재 {username}님은 {commentObj.situation} 상황에 놓여져있고,{" "}
+                  {commentObj.emotion} 느끼시고 있네요.
                   <br />
                   <br />
-                  화가 폭발할 것 같을 때는 그 자리를 피하는 것도 좋은 방법이라고
-                  생각해요
+                  {commentObj.comment}
                 </p>
               </div>
             )}

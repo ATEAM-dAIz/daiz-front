@@ -9,9 +9,10 @@
   }
   input {
     margin: 0;
-    word-break: break-word;
   }
-
+  textarea {
+    padding: 16px 4px 4px 24px;
+  }
   h1 {
     margin: 16px 0 16px 0;
     font-size: 24px;

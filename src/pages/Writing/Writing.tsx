@@ -30,7 +30,11 @@ const Writing: React.FC<RouteComponentProps> = ({ history }) => {
   const [existingContent, setExistingContent] = useState(false);
 
   const onChangeInput = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (
+      e:
+        | React.ChangeEvent<HTMLInputElement>
+        | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
       const {
         target: { name, value },
       } = e;
@@ -71,9 +75,8 @@ const Writing: React.FC<RouteComponentProps> = ({ history }) => {
           <hr />
           <div className={styles.wrapper}>
             <h2>오늘 무슨 일이 있었나요?</h2>
-            <input
+            <textarea
               name="content"
-              type="text"
               placeholder="내용"
               required
               className="input-writing"
