@@ -10,6 +10,7 @@ const Signup: React.FC<RouteComponentProps> = ({ history }) => {
   const [pw, setPw] = useState("");
   const [rePw, setRePw] = useState("");
   const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onChangeInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,10 +42,17 @@ const Signup: React.FC<RouteComponentProps> = ({ history }) => {
     if (!email.includes("@")) alert("이메일 형식을 입력하세요.");
     else if (rePw !== pw) alert("비밀번호를 확인하세요.");
     else {
+      setLoading(true);
       const response = await requestSignup(email, name, pw, rePw);
-      response !== "error" && history.push("/main");
+      setLoading(false);
+      if (response !== "error") {
+        alert("가입이 완료되었습니다!");
+        history.push("/main");
+      }
     }
   };
+
+  const buttonProps = loading ? { disabled: true } : {};
 
   return (
     <div className={styles.container}>
@@ -95,7 +103,13 @@ const Signup: React.FC<RouteComponentProps> = ({ history }) => {
           onChange={onChangeInput}
           required
         />
-        <button className={`btn-main ${styles.btn}`}>회원가입</button>
+        <button
+          type="submit"
+          className={`btn-main ${styles.btn}`}
+          {...buttonProps}
+        >
+          {loading ? <div className={styles.loading}></div> : "회원가입"}
+        </button>
       </form>
 
       <div className={styles.linkContainer}>
