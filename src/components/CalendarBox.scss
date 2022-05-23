@@ -6,6 +6,10 @@
   line-height: 1.125em;
   z-index: -1;
 }
+
+.react-calendar__month-view__days > * {
+  color: black;
+}
 .react-calendar--doubleView {
   width: 700px;
 }
@@ -43,6 +47,7 @@
   min-width: 44px;
   background: none;
   font-size: 20px;
+  color: black;
 }
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {

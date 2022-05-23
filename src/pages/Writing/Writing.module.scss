@@ -2,7 +2,9 @@
 
 .container {
   position: relative;
+  width: inherit;
   height: 100vh;
+  overflow-y: scroll;
 
   * {
     font-weight: normal;
@@ -42,7 +44,6 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
-  height: 500px;
   overflow-y: auto;
 }
 

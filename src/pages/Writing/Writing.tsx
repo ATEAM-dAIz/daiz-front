@@ -123,9 +123,8 @@ const Writing: React.FC<RouteComponentProps> = ({ history }) => {
             </div>
           )}
         </form>
+        {!showNavBar && <TabBar fullScreen={false} />}
       </div>
-
-      {!showNavBar && <TabBar />}
     </>
   );
 };

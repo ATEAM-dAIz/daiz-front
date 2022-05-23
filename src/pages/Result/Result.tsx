@@ -134,7 +134,7 @@ const Result = () => {
           </div>
         )}
         {loading && <div className={styles.loading}></div>}
-        {!showNavBar && <TabBar />}
+        {!showNavBar && <TabBar fullScreen={false} />}
       </div>
     </>
   );
