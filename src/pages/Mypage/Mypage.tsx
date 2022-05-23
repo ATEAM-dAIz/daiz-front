@@ -44,7 +44,7 @@ const Mypage = () => {
           <TextPreview />
         </div>
 
-        {!showNavBar && <TabBar />}
+        {!showNavBar && <TabBar fullScreen={false} />}
       </div>
     </>
   );

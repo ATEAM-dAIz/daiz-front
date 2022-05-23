@@ -45,7 +45,7 @@ const Main = () => {
           <TextPreview />
         </div>
 
-        {!showNavBar && <TabBar />}
+        {!showNavBar && <TabBar fullScreen={fullScreen} />}
       </Suspense>
     </div>
   );

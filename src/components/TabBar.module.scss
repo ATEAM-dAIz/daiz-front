@@ -11,6 +11,8 @@
   font-size: 28px;
   color: #d9d9d9;
   cursor: pointer;
+
+  padding-bottom: calc(1em + env(safe-area-inset-bottom));
 }
 
 .selectedBtn {
