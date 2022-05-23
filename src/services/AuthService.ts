@@ -20,7 +20,7 @@ export const requestSignup = async (
 };
 
 export const requestLogin = async (email: string, pw: string) => {
-  return axios
+  return await axios
     .post(
       `/api/login/`,
       {
@@ -44,7 +44,7 @@ export const requestLogin = async (email: string, pw: string) => {
 };
 
 export const requestAccessToken = async (refresh_token: string) => {
-  return axios
+  return await axios
     .post(`/api/token/refresh/`, {
       refresh: refresh_token,
     })
@@ -69,7 +69,7 @@ export const checkAccessToken = async (refresh_token: string) => {
 
 export const resetPassword = async (email: string) => {
   const body = JSON.stringify({ email });
-  return axios
+  return await axios
     .post(`/api/password/reset/`, body, {
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export const resetPasswordConfirm = async (
     uid,
     token,
   });
-  return axios
+  return await axios
     .post(`/api/password/reset/confirm/`, body, {
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +126,7 @@ export const changePassword = async (
       new_password2: reNewPw,
     };
 
-    return axios
+    return await axios
       .post(`/api/password/change/`, body, {
         headers: {
           "Content-Type": "application/json",
