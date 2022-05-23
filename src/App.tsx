@@ -10,7 +10,6 @@ const Login = lazy(() => import("./pages/Login/Login"));
 const Signup = lazy(() => import("./pages/Signup/Signup"));
 const Main = lazy(() => import("./pages/Main/Main"));
 const Writing = lazy(() => import("./pages/Writing/Writing"));
-const Analysis = lazy(() => import("./pages/Analysis/Analysis"));
 const Result = lazy(() => import("./pages/Result/Result"));
 const Mypage = lazy(() => import("./pages/Mypage/Mypage"));
 const ResetPwConfirm = lazy(
@@ -33,8 +32,7 @@ function App() {
 
             <PrivateRoute path="/main" component={Main} />
             <PrivateRoute path="/write" component={Writing} />
-            <PrivateRoute path="/analysis" component={Analysis} />
-            <PrivateRoute path="/result/:id" component={Result} />
+            <PrivateRoute path="/result/:diary_id" component={Result} />
             <PrivateRoute path="/mypage" component={Mypage} />
             <PrivateRoute path="/change_password" component={ChangePw} />
             <Route component={Page404} />
