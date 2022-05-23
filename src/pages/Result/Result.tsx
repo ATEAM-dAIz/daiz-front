@@ -72,7 +72,6 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
   useEffect(() => {
     const get = async () => {
       AIDetail(refresh_token, diary_id).then((response) => {
-        console.log(response);
         setCommentObj({
           situation: response.situation,
           emotion: response.emotion,

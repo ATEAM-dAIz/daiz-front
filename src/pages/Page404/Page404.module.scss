@@ -1,0 +1,23 @@
+@import "../../styles/utils.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  p {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  button {
+    width: 100px;
+    height: 50px;
+    background-color: $lightgray-color;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}

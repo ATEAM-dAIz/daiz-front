@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.scss";
 
@@ -18,6 +18,7 @@ const ResetPwConfirm = lazy(
 );
 const ResetPw = lazy(() => import("./pages/ResetPw/ResetPw"));
 const ChangePw = lazy(() => import("./pages/ChangePw/ChangePw"));
+const Page404 = lazy(() => import("./pages/Page404/Page404"));
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <PrivateRoute path="/result/:id" component={Result} />
           <PrivateRoute path="/mypage" component={Mypage} />
           <PrivateRoute path="/change_password" component={ChangePw} />
+          <Route path="*" component={Page404} />
         </Suspense>
       </Router>
     </div>
