@@ -15,6 +15,11 @@
   padding-bottom: calc(1em + env(safe-area-inset-bottom));
 }
 
+.element {
+  flex: 1;
+  text-align: center;
+}
+
 .selectedBtn {
   color: $main-color;
 }

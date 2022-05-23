@@ -30,21 +30,33 @@ const TabBar = ({ fullScreen }: { fullScreen: boolean }) => {
         <></>
       ) : (
         <div className={styles.icons}>
-          <FontAwesomeIcon
-            icon={faHome}
+          <span
+            className={styles.element}
             onClick={() => history.push("/main")}
-            className={mainBtn ? styles.selectedBtn : ""}
-          />
-          <FontAwesomeIcon
-            icon={faPlusCircle}
+          >
+            <FontAwesomeIcon
+              icon={faHome}
+              className={mainBtn ? styles.selectedBtn : ""}
+            />
+          </span>
+          <span
+            className={styles.element}
             onClick={() => history.push("/write")}
-            className={writingBtn ? styles.selectedBtn : ""}
-          />
-          <FontAwesomeIcon
-            icon={faUser}
+          >
+            <FontAwesomeIcon
+              icon={faPlusCircle}
+              className={writingBtn ? styles.selectedBtn : ""}
+            />
+          </span>
+          <span
+            className={styles.element}
             onClick={() => history.push("/mypage")}
-            className={mypageBtn ? styles.selectedBtn : ""}
-          />
+          >
+            <FontAwesomeIcon
+              icon={faUser}
+              className={mypageBtn ? styles.selectedBtn : ""}
+            />
+          </span>
         </div>
       )}
     </>
