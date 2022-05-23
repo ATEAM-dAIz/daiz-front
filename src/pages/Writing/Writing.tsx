@@ -12,6 +12,11 @@ import { RouteComponentProps } from "react-router";
 const Writing: React.FC<RouteComponentProps> = ({ history }) => {
   const dispatch = useAppDispatch();
   const [showNavBar, setShowNavBar] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [existingContent, setExistingContent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { width } = useWindowDimensions();
 
   useEffect(() => {
@@ -23,11 +28,6 @@ const Writing: React.FC<RouteComponentProps> = ({ history }) => {
   const refresh_token = useAppSelector(
     (state) => state.userReducer.refresh_token
   );
-
-  const [modal, setModal] = useState(false);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [existingContent, setExistingContent] = useState(false);
 
   const onChangeInput = useCallback(
     (
@@ -56,6 +56,16 @@ const Writing: React.FC<RouteComponentProps> = ({ history }) => {
   );
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => e.preventDefault();
+  const onClick = () => {
+    setLoading(true);
+    postDiary(refresh_token, title, content).then((res) => {
+      history.push({
+        pathname: `/result/${res.id}`,
+        state: res.id,
+      });
+      setLoading(false);
+    });
+  };
 
   return (
     <>
@@ -94,21 +104,21 @@ const Writing: React.FC<RouteComponentProps> = ({ history }) => {
               <p>일기가 분석된 후에는 수정할 수 없어요.</p>
               <p>다 썼는지 확인해주세요.</p>
               <div className={styles.btnContainer}>
-                <button
-                  className={styles.btnReturn}
-                  onClick={() => setModal(false)}
-                >
-                  돌아가기
-                </button>
-                <button
-                  className={styles.btnConfirm}
-                  onClick={() => {
-                    postDiary(refresh_token, title, content);
-                    history.push("/analysis");
-                  }}
-                >
-                  확인
-                </button>
+                {loading ? (
+                  <div className={styles.loading}></div>
+                ) : (
+                  <>
+                    <button
+                      className={styles.btnReturn}
+                      onClick={() => setModal(false)}
+                    >
+                      돌아가기
+                    </button>
+                    <button className={styles.btnConfirm} onClick={onClick}>
+                      확인
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           )}
