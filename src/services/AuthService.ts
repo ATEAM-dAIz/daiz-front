@@ -14,7 +14,10 @@ export const requestSignup = async (
       password2: rePw,
     })
     .catch((e) => {
-      alert(e.response.data.email);
+      Object.values(e.response.data).forEach((e: any) => {
+        alert(e[0]);
+      });
+
       return "error";
     });
 };
@@ -30,7 +33,7 @@ export const requestLogin = async (email: string, pw: string) => {
       { withCredentials: true }
     )
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       /// token이 필요한 API 요청 시 header Authorization에 token 담아서 보내기
       axios.defaults.headers.common[
         "Authorization"

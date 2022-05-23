@@ -40,7 +40,8 @@ const Signup: React.FC<RouteComponentProps> = ({ history }) => {
     e.preventDefault();
 
     if (!email.includes("@")) alert("이메일 형식을 입력하세요.");
-    else if (rePw !== pw) alert("비밀번호를 확인하세요.");
+    else if (pw.length < 8) alert("8자리 이상으로 입력해주세요.");
+    else if (rePw !== pw) alert("비밀번호가 다릅니다.");
     else {
       setLoading(true);
       const response = await requestSignup(email, name, pw, rePw);
