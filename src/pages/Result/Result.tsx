@@ -11,8 +11,9 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import NavBar from "../../components/NavBar";
 import { useAppSelector } from "../../store";
 import { AIDetail } from "../../services/AIService";
+import { useParams } from "react-router-dom";
 
-const Result = ({ location }: { location: { [key: string]: any } }) => {
+const Result = () => {
   const [loading, setLoading] = useState(false);
   const [wait, setWait] = useState(false);
   const [title, setTitle] = useState("");
@@ -39,19 +40,12 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
     width > 1024 ? setShowNavBar(true) : setShowNavBar(false);
   }, [width]);
 
-  // 성능 개선
-  let diary_id = 0;
-  if (location.state) {
-    localStorage.setItem("diary_id", location.state);
-    diary_id = location.state;
-  } else {
-    diary_id = Number(localStorage.getItem("diary_id")) ?? 0;
-  }
+  const { diary_id } = useParams<{ diary_id?: string }>();
 
   useEffect(() => {
     const get = async () => {
       setLoading(true);
-      getDiaryDetail(refresh_token, diary_id).then(
+      getDiaryDetail(refresh_token, Number(diary_id)).then(
         (response: {
           [key: number]: any;
           id: number;
@@ -71,7 +65,7 @@ const Result = ({ location }: { location: { [key: string]: any } }) => {
 
   useEffect(() => {
     const get = async () => {
-      AIDetail(refresh_token, diary_id).then((response) => {
+      AIDetail(refresh_token, Number(diary_id)).then((response) => {
         setCommentObj({
           situation: response.situation,
           emotion: response.emotion,
