@@ -9,7 +9,10 @@ const Page404 = () => {
   };
   return (
     <div className={styles.container}>
-      <p>잘못된 접근입니다.</p>
+      <p>페이지가 존재하지 않습니다.</p>
+      <span>
+        링크를 잘못 입력하셨거나 페이지가 삭제, 이동 되었을 수 있습니다.
+      </span>
       <button onClick={onClick}>뒤로가기</button>
     </div>
   );

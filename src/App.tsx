@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.scss";
 
@@ -25,18 +25,20 @@ function App() {
     <div className="App">
       <Router>
         <Suspense fallback={<p>로딩중...</p>}>
-          <PublicRoute restricted={true} exact path="/" component={Login} />
-          <PublicRoute restricted={true} path="/signup" component={Signup} />
-          <PublicRoute path="/reset_password" component={ResetPw} />
-          <PublicRoute path="/reset/:uid/:token" component={ResetPwConfirm} />
+          <Switch>
+            <PublicRoute restricted={true} exact path="/" component={Login} />
+            <PublicRoute restricted={true} path="/signup" component={Signup} />
+            <PublicRoute path="/reset_password" component={ResetPw} />
+            <PublicRoute path="/reset/:uid/:token" component={ResetPwConfirm} />
 
-          <PrivateRoute path="/main" component={Main} />
-          <PrivateRoute path="/write" component={Writing} />
-          <PrivateRoute path="/analysis" component={Analysis} />
-          <PrivateRoute path="/result/:id" component={Result} />
-          <PrivateRoute path="/mypage" component={Mypage} />
-          <PrivateRoute path="/change_password" component={ChangePw} />
-          <Route path="*" component={Page404} />
+            <PrivateRoute path="/main" component={Main} />
+            <PrivateRoute path="/write" component={Writing} />
+            <PrivateRoute path="/analysis" component={Analysis} />
+            <PrivateRoute path="/result/:id" component={Result} />
+            <PrivateRoute path="/mypage" component={Mypage} />
+            <PrivateRoute path="/change_password" component={ChangePw} />
+            <Route component={Page404} />
+          </Switch>
         </Suspense>
       </Router>
     </div>
