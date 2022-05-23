@@ -38,18 +38,20 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
         refresh_token: string;
       };
       result = await requestLogin(email, pw);
-
-      dispatch(
-        login(
-          result["user"]["email"],
-          result["refresh_token"],
-          result["user"]["name"],
-          true
-        )
-      );
-      result["user"]["email"]
-        ? history.push("/main")
-        : alert("정보 불러오기 실패");
+      if (Object.keys(result)[0] === "non_field_errors") {
+        alert("아이디 혹은 비밀번호를 확인 해주세요.");
+        history.push("/");
+      } else {
+        dispatch(
+          login(
+            result["user"]["email"],
+            result["refresh_token"],
+            result["user"]["name"],
+            true
+          )
+        );
+        history.push("/main");
+      }
     }
   };
 

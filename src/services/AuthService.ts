@@ -39,7 +39,7 @@ export const requestLogin = async (email: string, pw: string) => {
     })
     .catch((e) => {
       console.log(e.response.data);
-      return "이메일 혹은 비밀번호를 확인하세요.";
+      return e.response.data;
     });
 };
 
