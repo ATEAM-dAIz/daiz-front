@@ -1,6 +1,8 @@
 @import "../../styles/utils.scss";
 
 .container {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: inherit;
   height: 100%;

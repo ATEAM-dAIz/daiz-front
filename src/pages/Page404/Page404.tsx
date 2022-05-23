@@ -1,4 +1,3 @@
-import React from "react";
 import { useHistory } from "react-router";
 import styles from "./Page404.module.scss";
 
