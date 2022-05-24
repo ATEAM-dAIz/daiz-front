@@ -81,7 +81,7 @@
 .btnContainer {
   width: 100%;
 
-  * {
+  button {
     width: 100px;
     height: 30px;
     border: none;
@@ -99,8 +99,8 @@
 }
 
 .loading {
-  width: 1.5em;
-  height: 1.5em;
+  width: 24px;
+  height: 24px;
   margin: 8px auto;
   border-radius: 50%;
   border: 3px solid $lightgray-color;
@@ -129,7 +129,7 @@
       font-size: 20px;
     }
     button {
-      margin-top: 40px;
+      margin-top: 32px;
     }
   }
   .modal {
@@ -138,10 +138,8 @@
       font-size: 18px;
     }
   }
-  .btnContainer {
-    * {
-      width: 120px;
-    }
+  .btnContainer > button {
+    width: 120px;
   }
 }
 
@@ -167,11 +165,9 @@
   .wrapper {
     height: 600px;
   }
-  .btnContainer {
-    * {
-      width: 120px;
-      height: 40px;
-      font-size: 14px;
-    }
+  .btnContainer > button {
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
   }
 }
