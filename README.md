@@ -1,5 +1,9 @@
 # 📝 dAIz (데이즈)
 
+![포스터](https://user-images.githubusercontent.com/66022264/171323348-7d0a6bf0-9f29-45f3-9480-7124a0d27604.jpg)
+
+
+
 ## 프로젝트 소개
 - AI를 통해 일기를 분석하여 심리 상태를 알려주고 공감하는 웹입니다.
 
@@ -9,7 +13,6 @@
 - HTML, SCSS Modules
 - Django Rest API
 - Korean BERT pre-trained cased API
-
 
 ##  기능 / 소개
 - 자연어 처리 기법을 사용하여 사용자의 감정을 분석하고 의견을 제시합니다.
